@@ -21,7 +21,6 @@ public class PlayerMain : MonoBehaviour
             playerMove.Move(Input.GetAxis("Horizontal"));
 
         if(Input.GetKey(KeyCode.E) && playerInteract.isHarvesting) // Need a cooldown between E-key keystrokes
-            Debug.Log("Attempting to harvest"!);
-
+            playerInteract.Harvest();
     }
 }
