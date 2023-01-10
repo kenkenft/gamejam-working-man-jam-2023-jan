@@ -6,20 +6,23 @@ public class PlayerInteract : MonoBehaviour
 {
     public bool isHarvesting = false;
     public float harvestCooldown = 2f, lastSuccessfulPressTime = 0f, currButtonPressTime = 0f;
-    public int harvestPower = 20;
+    public int harvestPower = 20, harvestProgress = 100; 
 
     CropProperties targetCrop;
 
-    public void Harvest()
+    public void Harvest(string harvestKeyInput)
     {
         currButtonPressTime = Time.time;
         if(currButtonPressTime - lastSuccessfulPressTime > harvestCooldown)
         {
             lastSuccessfulPressTime = currButtonPressTime;
-            targetCrop.HarvestFruit(harvestPower);
+            harvestProgress = targetCrop.HarvestFruit(harvestPower);
+            if(harvestProgress <= 0)
+                Debug.Log("Last button press is: " + harvestKeyInput);
         }
         else
             Debug.Log("Can't use harvest action yet!");
+        
     }
 
     void OnTriggerEnter2D(Collider2D col)

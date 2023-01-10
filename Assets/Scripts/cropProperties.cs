@@ -12,7 +12,7 @@ public class CropProperties : MonoBehaviour
         stalkCol = GetComponentInChildren<Collider2D>();
     }
 
-    public void HarvestFruit(int harvestPower)
+    public int HarvestFruit(int harvestPower)
     {
         harvestProgress -= harvestPower;
         Debug.Log("Harvest Progress remaining: " + harvestProgress);
@@ -20,5 +20,6 @@ public class CropProperties : MonoBehaviour
         {
             Debug.Log("Fruit Harvested!");
         }
+        return harvestProgress;
     }
 }
