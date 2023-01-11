@@ -30,8 +30,8 @@ public class PlayerMain : MonoBehaviour
             isHarvested = playerInteract.Harvest(Input.inputString);
             if(isHarvested)
             {
-                Debug.Log("Crop harvested! Sending to Truck: " + Input.inputString);
-                uiManager.FillTruck(Input.inputString);
+                // Debug.Log("Crop harvested! Sending to Truck: " + Input.inputString);
+                uiManager.UpdateTruck(Input.inputString);
                 // Call method that updates the specific truck progress in UIManager   
             }
             

@@ -153,7 +153,7 @@ RectTransform:
   m_Children:
   - {fileID: 282908503}
   m_Father: {fileID: 1285881044}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -170,7 +170,7 @@ GameObject:
   m_Component:
   - component: {fileID: 135745367}
   m_Layer: 5
-  m_Name: Truck04
+  m_Name: Truck00
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -190,7 +190,7 @@ RectTransform:
   m_Children:
   - {fileID: 1469951699}
   m_Father: {fileID: 1285881044}
-  m_RootOrder: 3
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -227,7 +227,7 @@ RectTransform:
   m_Children:
   - {fileID: 1009205801}
   m_Father: {fileID: 1285881044}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1686,6 +1686,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf1b1bdff80e67b4c85aecf2a286197b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trucks:
+  - {fileID: 135745366}
+  - {fileID: 1251266987}
+  - {fileID: 242800389}
+  - {fileID: 116823834}
 --- !u!1 &690235157
 GameObject:
   m_ObjectHideFlags: 0
@@ -2022,7 +2027,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1175325122
 GameObject:
@@ -2085,7 +2090,7 @@ RectTransform:
   m_Children:
   - {fileID: 2020136956}
   m_Father: {fileID: 1285881044}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2120,10 +2125,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 135745367}
   - {fileID: 1251266988}
   - {fileID: 242800390}
   - {fileID: 116823835}
-  - {fileID: 135745367}
   m_Father: {fileID: 655737493}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2167,6 +2172,63 @@ MonoBehaviour:
   currButtonPressTime: 0
   harvestPower: 20
   harvestProgress: 100
+--- !u!1001 &1317659024
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4435087761400236392, guid: 66dd8e926226eec46ae7646863895e12, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4435087761400236392, guid: 66dd8e926226eec46ae7646863895e12, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 4435087761400236392, guid: 66dd8e926226eec46ae7646863895e12, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 4435087761400236392, guid: 66dd8e926226eec46ae7646863895e12, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.068919644
+      objectReference: {fileID: 0}
+    - target: {fileID: 4435087761400236392, guid: 66dd8e926226eec46ae7646863895e12, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4435087761400236392, guid: 66dd8e926226eec46ae7646863895e12, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4435087761400236392, guid: 66dd8e926226eec46ae7646863895e12, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4435087761400236392, guid: 66dd8e926226eec46ae7646863895e12, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4435087761400236392, guid: 66dd8e926226eec46ae7646863895e12, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4435087761400236392, guid: 66dd8e926226eec46ae7646863895e12, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4435087761400236392, guid: 66dd8e926226eec46ae7646863895e12, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4435087761400236393, guid: 66dd8e926226eec46ae7646863895e12, type: 3}
+      propertyPath: m_Name
+      value: Crop (1)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 66dd8e926226eec46ae7646863895e12, type: 3}
 --- !u!1 &1336234879
 GameObject:
   m_ObjectHideFlags: 0
@@ -2176,6 +2238,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1336234880}
+  - component: {fileID: 1336234881}
   m_Layer: 0
   m_Name: UIs
   m_TagString: Untagged
@@ -2199,8 +2262,20 @@ Transform:
   - {fileID: 1536178482}
   - {fileID: 1175325123}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1336234881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1336234879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c99ebcaf7a920ed49830879a2699ee88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1469951698
 GameObject:
   m_ObjectHideFlags: 0
@@ -2213,7 +2288,7 @@ GameObject:
   - component: {fileID: 1469951701}
   - component: {fileID: 1469951700}
   m_Layer: 5
-  m_Name: Truck04Text
+  m_Name: Truck00Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
