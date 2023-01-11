@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    PlayerOverlay playerOverlay;
     void Start()
     {
-        
+        playerOverlay = GetComponentInChildren<PlayerOverlay>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void FillTruck(string truckTarget)
     {
-        
+        Debug.Log("Truck Progress updated! " + truckTarget);
     }
+
 }

@@ -6,12 +6,14 @@ public class PlayerMain : MonoBehaviour
 {
     bool isHarvested = false;
     PlayerMove playerMove;
+    UIManager uiManager;
     PlayerInteract playerInteract;
 
     void Start()
     {
         playerMove = GetComponent<PlayerMove>();
         playerInteract = GetComponent<PlayerInteract>();
+        uiManager = FindObjectOfType<UIManager>();
     }
     void Update()
     {
@@ -29,6 +31,7 @@ public class PlayerMain : MonoBehaviour
             if(isHarvested)
             {
                 Debug.Log("Crop harvested! Sending to Truck: " + Input.inputString);
+                uiManager.FillTruck(Input.inputString);
                 // Call method that updates the specific truck progress in UIManager   
             }
             
