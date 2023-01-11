@@ -1,22 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class PlayerOverlay : MonoBehaviour
 {
     public GameObject[] trucks = new GameObject[4];
+    TruckProperties[] trucksProperties = new TruckProperties[4];
+    int fillAmount = 20;
     void Start()
     {
-         
+        for(int i = 0 ; i< trucks.Length; i++)
+        {
+            trucksProperties[i] = trucks[i].GetComponentInChildren<TruckProperties>();
+        }
     }
 
 
     public void UpdateCorrectTruck(string targetTruck)
     {
         int truckID = GetCorrectTruckID(targetTruck);
-        FillTruck(truckID);
-
+        LoadAndCheckTruck(truckID);
     }
 
     int GetCorrectTruckID(string targetTruck)
@@ -36,10 +39,9 @@ public class PlayerOverlay : MonoBehaviour
         }
     }
 
-    void FillTruck(int truckID)
+    void LoadAndCheckTruck(int truckID)
     {
-        TextMeshProUGUI truckProgress = trucks[truckID].GetComponentInChildren<TextMeshProUGUI>();
-        Debug.Log("Filling truck ID: " + truckID);
-        // truckProgress.SetText()
+        trucksProperties[truckID].UpdateTruckFullness(fillAmount);
+        // if(trucksProperties[truckID].IsTruckFull())
     }
 }

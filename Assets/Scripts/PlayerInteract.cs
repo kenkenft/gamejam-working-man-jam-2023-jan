@@ -6,7 +6,7 @@ public class PlayerInteract : MonoBehaviour
 {
     public bool isHarvesting = false;
     public float harvestCooldown = 2f, lastSuccessfulPressTime = 0f, currButtonPressTime = 0f;
-    public int harvestPower = 20, harvestProgress = 20; 
+    public int harvestPower = 20, harvestProgress = 100; 
 
     CropProperties targetCrop;
 

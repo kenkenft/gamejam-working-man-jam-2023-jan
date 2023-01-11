@@ -5,7 +5,7 @@ using UnityEngine;
 public class CropProperties : MonoBehaviour
 {
     Collider2D stalkCol;
-    int harvestProgress = 100;
+    int harvestProgress = 20;
     
     void Start()
     {
