@@ -7,7 +7,8 @@ public class CropProperties : MonoBehaviour
     bool isHarvestable = true;
     Collider2D stalkCol;
     SpriteRenderer fruitSprite;
-    int harvestProgress = 80;
+    int harvestProgress = 80, currFruitID = 0;
+    // List<int> validFruitPool = new List<int>{};
     float timeToGrow = 2.5f;
     WaitForSecondsRealtime delay = new WaitForSecondsRealtime(2.5f);
     
@@ -44,6 +45,11 @@ public class CropProperties : MonoBehaviour
         return isHarvestable;
     }
 
+    public int GetCurrentFruitType()
+    {
+        return currFruitID;
+    }
+
     IEnumerator RegrowCrop(float cropGrowingTime)
     {
         Debug.Log("RegrowCrop Coroutine started. Waiting.");
@@ -52,6 +58,7 @@ public class CropProperties : MonoBehaviour
         Debug.Log("Plant is growing");
         harvestProgress = 80;
         isHarvestable = true;
+        // TODO Method that changes the crop's fruit type 
         fruitSprite.enabled = true;
         Debug.Log("Plant has finished growing!");
         yield return null;

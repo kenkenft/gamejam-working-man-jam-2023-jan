@@ -31,6 +31,11 @@ public class PlayerInteract : MonoBehaviour
         
     }
 
+    public int CheckHarvestedFruitType()
+    {
+        return targetCrop.GetCurrentFruitType();
+    }
+
     void OnTriggerEnter2D(Collider2D col)
     {
         if(col.gameObject.CompareTag("Crop"))

@@ -19,10 +19,10 @@ public class PlayerOverlay : MonoBehaviour
     }
 
 
-    public void UpdateCorrectTruck(string targetTruck)
+    public void UpdateCorrectTruck(string targetTruck, int fruitID)
     {
         int truckID = GetCorrectTruckID(targetTruck);
-        LoadAndCheckTruck(truckID);
+        LoadAndCheckTruck(truckID, fruitID);
     }
 
     int GetCorrectTruckID(string targetTruck)
@@ -45,9 +45,10 @@ public class PlayerOverlay : MonoBehaviour
         }
     }
 
-    void LoadAndCheckTruck(int truckID)
+    void LoadAndCheckTruck(int truckID, int fruitID)
     {
         trucksProperties[truckID].UpdateTruckFullness(fillAmount);
+        trucksProperties[truckID].IncrementBonusTracker(fruitID);
         if(trucksProperties[truckID].IsTruckFull())
         {
             truckScore = trucksProperties[truckID].CalcTruckScore();

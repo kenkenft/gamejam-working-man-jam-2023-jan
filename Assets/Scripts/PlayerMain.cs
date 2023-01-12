@@ -31,7 +31,8 @@ public class PlayerMain : MonoBehaviour
             if(isHarvested)
             {
                 // Debug.Log("Crop harvested! Sending to Truck: " + Input.inputString);
-                uiManager.UpdateTruck(Input.inputString);
+                // Method to send fruit type
+                uiManager.UpdateTruck(Input.inputString, playerInteract.CheckHarvestedFruitType());
                 // Call method that updates the specific truck progress in UIManager   
             }
             

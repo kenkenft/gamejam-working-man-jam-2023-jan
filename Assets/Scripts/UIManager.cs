@@ -10,10 +10,10 @@ public class UIManager : MonoBehaviour
         playerOverlay = GetComponentInChildren<PlayerOverlay>();
     }
 
-    public void UpdateTruck(string truckTarget)
+    public void UpdateTruck(string truckTarget, int fruitID)
     {
         // Debug.Log("Truck Progress updated! " + truckTarget);
-        playerOverlay.UpdateCorrectTruck(truckTarget);
+        playerOverlay.UpdateCorrectTruck(truckTarget, fruitID);
     }
 
 }
