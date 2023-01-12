@@ -6,18 +6,19 @@ public class PlayerInteract : MonoBehaviour
 {
     public bool isHarvesting = false;
     public float harvestCooldown = 2f, lastSuccessfulPressTime = 0f, currButtonPressTime = 0f;
-    public int harvestPower = 20, harvestProgress = 100; 
+    public int harvestPower = 20, harvestProgress = 0; 
 
     CropProperties targetCrop;
 
     public bool Harvest(string harvestKeyInput)
     {
         currButtonPressTime = Time.time;
-        if(currButtonPressTime - lastSuccessfulPressTime > harvestCooldown)
+        if((currButtonPressTime - lastSuccessfulPressTime > harvestCooldown) 
+            && targetCrop.CheckHarvestable())
         {
             lastSuccessfulPressTime = currButtonPressTime;
             harvestProgress = targetCrop.HarvestFruit(harvestPower);
-            if(harvestProgress <= 0)
+            if(harvestProgress >= 100)
             {
                 // Debug.Log("Last button press is: " + harvestKeyInput);
                 return true;
@@ -45,6 +46,7 @@ public class PlayerInteract : MonoBehaviour
         if(col.gameObject.tag == "Crop")
         {
             isHarvesting = false;
+            // targetCrop = null;
             // Debug.Log("Exited crop harvest radius");
         }
     }
