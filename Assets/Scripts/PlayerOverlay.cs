@@ -1,18 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+// using TMPro;
 
 public class PlayerOverlay : MonoBehaviour
 {
     public GameObject[] trucks = new GameObject[4];
     TruckProperties[] trucksProperties = new TruckProperties[4];
-    int fillAmount = 20;
+    ScoreTextProperties scoreTextProperties;
+    int fillAmount = 20, truckScore;
     void Start()
     {
         for(int i = 0 ; i< trucks.Length; i++)
         {
             trucksProperties[i] = trucks[i].GetComponentInChildren<TruckProperties>();
         }
+        scoreTextProperties = GetComponentInChildren<ScoreTextProperties>();
     }
 
 
@@ -35,13 +38,20 @@ public class PlayerOverlay : MonoBehaviour
             case "l":
                 return 3;
             default:
-                return -1;
+                {
+                    Debug.Log("PlayerOverlay.GetCorrectTruckID() default state triggered. targetTruck string: " + targetTruck);
+                    return -1;
+                }
         }
     }
 
     void LoadAndCheckTruck(int truckID)
     {
         trucksProperties[truckID].UpdateTruckFullness(fillAmount);
-        // if(trucksProperties[truckID].IsTruckFull())
+        if(trucksProperties[truckID].IsTruckFull())
+        {
+            truckScore = trucksProperties[truckID].CalcTruckScore();
+            scoreTextProperties.UpdateScore(truckScore);
+        }
     }
 }

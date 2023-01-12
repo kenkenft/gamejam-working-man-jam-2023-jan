@@ -7,6 +7,7 @@ public class TruckProperties : MonoBehaviour
 {
     
     int truckFullness = 0;
+    // List<int>
     TextMeshProUGUI truckProgressText;
     void Start()
     {
@@ -28,5 +29,12 @@ public class TruckProperties : MonoBehaviour
     {
         bool isTruckFull = (truckFullness >= 100) ? true : false; 
         return isTruckFull;
+    }
+
+    public int CalcTruckScore()
+    {
+        Debug.Log("UpdateTruckScore called!");
+        // TODO Calculate score based on contents of truck
+        return 1000;
     }
 }

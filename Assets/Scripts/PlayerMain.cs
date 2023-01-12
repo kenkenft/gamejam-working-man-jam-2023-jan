@@ -24,7 +24,7 @@ public class PlayerMain : MonoBehaviour
             playerMove.Move(Input.GetAxis("Horizontal"));
         
         // Need to figure out how to allow for 4 separate OR cases efficiently for the 4 trucks
-        if((Input.GetKey(KeyCode.H) || Input.GetKey(KeyCode.J)) 
+        if((Input.GetKeyDown(KeyCode.H) || Input.GetKeyDown(KeyCode.J)) 
         && playerInteract.isHarvesting) // Need a cooldown between E-key keystrokes
         {
             isHarvested = playerInteract.Harvest(Input.inputString);
