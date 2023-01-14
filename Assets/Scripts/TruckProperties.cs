@@ -6,9 +6,10 @@ using TMPro;
 public class TruckProperties : MonoBehaviour
 {
     
-    int truckFullness = 0;
+    int truckFullness = 0, deliveryBonusScore = 0;
     List<int> validFruitPool = new List<int>{0};
-    int[] fruitBonusTracker;
+    int[] fruitBonusTracker,
+            deliveryBonusMultiplier = {0, 100, 103, 106, 109, 115, 124, 139, 163, 202, 265};
     TextMeshProUGUI truckProgressText;
     void Start()
     {
@@ -42,17 +43,31 @@ public class TruckProperties : MonoBehaviour
                 fruitBonusTracker[i]++;
         }
 
-        for(int i = 0; i< fruitBonusTracker.Length; i++)
-        {
-            Debug.Log("Fruit id: " + validFruitPool[i] + ". Counter number: " + fruitBonusTracker[i]);
-        }
+        // for(int i = 0; i< fruitBonusTracker.Length; i++)
+        // {
+        //     Debug.Log("Fruit id: " + validFruitPool[i] + ". Counter number: " + fruitBonusTracker[i]);
+        // }
     }
 
     public int CalcTruckScore()
     {
-        Debug.Log("UpdateTruckScore called!");
+        // Debug.Log("CalcTruckScore called!");
         // TODO Calculate score based on contents of truck
-        return 1000;
+        foreach(int tracker in fruitBonusTracker)
+        {
+            // Debug.Log("tracker value: " + tracker);
+            // Debug.Log("deliveryBonusMultiplier value: " + deliveryBonusMultiplier[tracker]);
+            deliveryBonusScore += (100 * tracker * deliveryBonusMultiplier[tracker] / 100);
+        }
+        Debug.Log(deliveryBonusScore);
+        return deliveryBonusScore;
+    }
+
+    public void ResetTruckProperties()
+    {
+        deliveryBonusScore = 0;
+        UpdateTruckFullness(-100);
+        ResetBonusTracker();
     }
 
     void ResetBonusTracker()

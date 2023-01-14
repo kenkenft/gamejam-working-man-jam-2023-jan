@@ -18,7 +18,7 @@ public class CropProperties : MonoBehaviour
         SpriteRenderer[] cropSprites = GetComponentsInChildren<SpriteRenderer>();
         foreach(SpriteRenderer sprite in cropSprites)
         {
-            Debug.Log("Sprite name: " + sprite.name);
+            // Debug.Log("Sprite name: " + sprite.name);
             if(sprite.name == "FruitPosition")
                 fruitSprite = sprite;
         }
@@ -29,10 +29,10 @@ public class CropProperties : MonoBehaviour
     public int HarvestFruit(int harvestPower)
     {
         harvestProgress += harvestPower;
-        Debug.Log("Harvest Progress remaining: " + harvestProgress);
+        // Debug.Log("Harvest Progress remaining: " + harvestProgress);
         if(harvestProgress >=100)
         {
-            Debug.Log("Fruit Harvested!");
+            // Debug.Log("Fruit Harvested!");
             isHarvestable = false;
             fruitSprite.enabled = false;
             StartCoroutine(RegrowCrop(timeToGrow)); 
@@ -52,15 +52,15 @@ public class CropProperties : MonoBehaviour
 
     IEnumerator RegrowCrop(float cropGrowingTime)
     {
-        Debug.Log("RegrowCrop Coroutine started. Waiting.");
+        // Debug.Log("RegrowCrop Coroutine started. Waiting.");
         // yield return new WaitForSecondsRealtime(cropGrowingTime);
         yield return delay;
-        Debug.Log("Plant is growing");
+        // Debug.Log("Plant is growing");
         harvestProgress = 80;
         isHarvestable = true;
         // TODO Method that changes the crop's fruit type 
         fruitSprite.enabled = true;
-        Debug.Log("Plant has finished growing!");
+        // Debug.Log("Plant has finished growing!");
         yield return null;
     }
 }

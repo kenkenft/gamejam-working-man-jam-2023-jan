@@ -8,7 +8,7 @@ public class PlayerOverlay : MonoBehaviour
     public GameObject[] trucks = new GameObject[4];
     TruckProperties[] trucksProperties = new TruckProperties[4];
     ScoreTextProperties scoreTextProperties;
-    int fillAmount = 20, truckScore;
+    int fillAmount = 20;
     void Start()
     {
         for(int i = 0 ; i< trucks.Length; i++)
@@ -27,6 +27,7 @@ public class PlayerOverlay : MonoBehaviour
 
     int GetCorrectTruckID(string targetTruck)
     {
+        Debug.Log("target truck:" + targetTruck);
         switch(targetTruck) // Would this be better as a dictionary?
         {
             case "h":
@@ -51,8 +52,8 @@ public class PlayerOverlay : MonoBehaviour
         trucksProperties[truckID].IncrementBonusTracker(fruitID);
         if(trucksProperties[truckID].IsTruckFull())
         {
-            truckScore = trucksProperties[truckID].CalcTruckScore();
-            scoreTextProperties.UpdateScore(truckScore);
+            scoreTextProperties.UpdateScore(trucksProperties[truckID].CalcTruckScore());
+            trucksProperties[truckID].ResetTruckProperties();
         }
     }
 }

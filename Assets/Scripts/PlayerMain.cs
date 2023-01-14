@@ -27,11 +27,11 @@ public class PlayerMain : MonoBehaviour
         if((Input.GetKeyDown(KeyCode.H) || Input.GetKeyDown(KeyCode.J)) 
         && playerInteract.isHarvesting) // Need a cooldown between E-key keystrokes
         {
-            isHarvested = playerInteract.Harvest(Input.inputString);
+            isHarvested = playerInteract.Harvest();
             if(isHarvested)
             {
                 // Debug.Log("Crop harvested! Sending to Truck: " + Input.inputString);
-                // Method to send fruit type
+                // TODO method to parse Input.inputString because if player is moving and interacting, it gets 2 keys!
                 uiManager.UpdateTruck(Input.inputString, playerInteract.CheckHarvestedFruitType());
                 // Call method that updates the specific truck progress in UIManager   
             }

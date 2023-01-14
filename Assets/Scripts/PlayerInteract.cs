@@ -10,7 +10,7 @@ public class PlayerInteract : MonoBehaviour
 
     CropProperties targetCrop;
 
-    public bool Harvest(string harvestKeyInput)
+    public bool Harvest()
     {
         currButtonPressTime = Time.time;
         if((currButtonPressTime - lastSuccessfulPressTime > harvestCooldown) 
@@ -19,10 +19,7 @@ public class PlayerInteract : MonoBehaviour
             lastSuccessfulPressTime = currButtonPressTime;
             harvestProgress = targetCrop.HarvestFruit(harvestPower);
             if(harvestProgress >= 100)
-            {
-                // Debug.Log("Last button press is: " + harvestKeyInput);
                 return true;
-            }
         }
         // else
         //     Debug.Log("Can't use harvest action yet!");
