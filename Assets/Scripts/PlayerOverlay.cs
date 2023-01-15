@@ -9,6 +9,7 @@ public class PlayerOverlay : MonoBehaviour
     TruckProperties[] trucksProperties = new TruckProperties[4];
     FruitPoolProperties fruitPoolProperties;
     ScoreTextProperties scoreTextProperties;
+    Timer timer;
     int fillAmount = 20;
     void Start()
     {
@@ -19,6 +20,7 @@ public class PlayerOverlay : MonoBehaviour
             trucksProperties[i].SetFruitPoolPropertiesRef(fruitPoolProperties);
         }
         scoreTextProperties = GetComponentInChildren<ScoreTextProperties>();
+        timer = GetComponentInChildren<Timer>();
     }
 
 
