@@ -8,8 +8,9 @@ public class CropProperties : MonoBehaviour
     Collider2D stalkCol;
     SpriteRenderer fruitSpriteRenderer;
     Sprite fruitSprite;
+    public List<Sprite> mainFruitSprites = new List<Sprite>{};
     List<int> cropFruitPool = new List<int>{};
-    int harvestProgress = 80, currFruitID = 0;
+    int harvestProgress = 80, currFruitID = -1;
     // List<int> validFruitPool = new List<int>{};
     float timeToGrow = 2.5f;
     WaitForSecondsRealtime delay = new WaitForSecondsRealtime(2.5f);
@@ -17,17 +18,6 @@ public class CropProperties : MonoBehaviour
     void Start()
     {
         stalkCol = GetComponentInChildren<Collider2D>();
-        SpriteRenderer[] cropSprites = GetComponentsInChildren<SpriteRenderer>();
-        foreach(SpriteRenderer spriteRenderer in cropSprites)
-        {
-            // Debug.Log("Sprite name: " + sprite.name);
-            if(spriteRenderer.name == "FruitPosition")
-            {
-                fruitSpriteRenderer = spriteRenderer;
-                fruitSprite = spriteRenderer.sprite;
-            }
-        }
-
         // delay = new WaitForSeconds(timeToGrow);
     }
 
@@ -55,10 +45,43 @@ public class CropProperties : MonoBehaviour
         return currFruitID;
     }
 
+    public void SetUpSprites()
+    {
+        SpriteRenderer[] cropSprites = GetComponentsInChildren<SpriteRenderer>();
+        foreach(SpriteRenderer spriteRenderer in cropSprites)
+        {
+            // Debug.Log("Sprite name: " + sprite.name);
+            if(spriteRenderer.name == "FruitPosition")
+            {
+                fruitSpriteRenderer = spriteRenderer;
+                // Debug.Log("Fruit Position Found! " + fruitSpriteRenderer.name);
+                // fruitSprite = spriteRenderer.sprite;
+            }
+        }
+    }
+
     public void UpdateCropPool(int newFruitID)
     {
         cropFruitPool.Add(newFruitID);
         Debug.Log("Fruit Added! ID: " + cropFruitPool[cropFruitPool.Count-1]);
+    }
+
+    public void GrowRandomFruit()
+    {
+        bool isNewFruitSelected = false;
+        int randomIndex;
+        
+        if(!isNewFruitSelected)
+        {
+            randomIndex = Random.Range(0, cropFruitPool.Count);
+            if(randomIndex != currFruitID || cropFruitPool.Count == 1)
+            {
+                currFruitID = cropFruitPool[randomIndex];
+                fruitSpriteRenderer.sprite = mainFruitSprites[currFruitID];
+                // fruitSprite = mainFruitSprites[currFruitID];
+                isNewFruitSelected = true;
+            }
+        }
     }
 
     IEnumerator RegrowCrop(float cropGrowingTime)
@@ -69,7 +92,7 @@ public class CropProperties : MonoBehaviour
         // Debug.Log("Plant is growing");
         harvestProgress = 80;
         isHarvestable = true;
-        // TODO Method that changes the crop's fruit type 
+        GrowRandomFruit();
         fruitSpriteRenderer.enabled = true;
         // Debug.Log("Plant has finished growing!");
         yield return null;

@@ -4,48 +4,59 @@ using UnityEngine;
 
 public class CropManager : MonoBehaviour
 {
-    int[] MainFruitPool;
-    public Sprite[] mainFruitSprites;
+    int[] mainFruitPool;
+    // public Sprite[] mainFruitSprites;
     public GameObject cropPrefab;
-    List<int> cropFruitPool = new List<int>{}, unaddedFruit = new List<int>{};
+    FruitPoolProperties fruitPoolProperties;
+    // List<int> cropFruitPool = new List<int>{}, unaddedFruit = new List<int>{};
     CropProperties[] allCropsProperties; 
-    int randomIndex;
+    // int randomIndex;
     void Start()
     {
-        SetUpUnaddedFruit();
-        AddToCropPool(2);
+        fruitPoolProperties = FindObjectOfType<FruitPoolProperties>();
+        // SetUpUnaddedFruit();
+        // AddToCropPool(2);
+        fruitPoolProperties.SetUpUnaddedFruit();
+        fruitPoolProperties.AddToCropPool(2);
         
-        // foreach(int fruit in cropFruitPool)
-        //     Debug.Log("FruitID: " + fruit);
+        foreach(int fruit in fruitPoolProperties.cropFruitPool)
+            Debug.Log("FruitID: " + fruit + ". Fruit name: " + fruitPoolProperties.mainFruitSprites[fruit]);
 
         allCropsProperties = GetComponentsInChildren<CropProperties>();
         //TODO For each cropPrefab, set the cropFruitPool, spritePool
         foreach(CropProperties crop in allCropsProperties)
         {
-            crop.UpdateCropPool(cropFruitPool[0]);
-            crop.UpdateCropPool(cropFruitPool[1]);
+            crop.UpdateCropPool(fruitPoolProperties.cropFruitPool[0]);
+            crop.UpdateCropPool(fruitPoolProperties.cropFruitPool[1]);
+            for(int i = 0; i < fruitPoolProperties.mainFruitSprites.Length; i++)
+            {
+                crop.mainFruitSprites.Add(fruitPoolProperties.mainFruitSprites[i]);
+            }
+            crop.SetUpSprites();
+            crop.GrowRandomFruit();
         }
     }
 
-    void SetUpUnaddedFruit()
-    {
-        MainFruitPool = new int[mainFruitSprites.Length];
-        for(int i = 0; i < mainFruitSprites.Length; i++)
-        {    
-            MainFruitPool[i] = i;
-            unaddedFruit.Add(i);
-        }
-    }
+    // void SetUpUnaddedFruit()
+    // {
+    //     // mainFruitPool = new int[mainFruitSprites.Length];
+    //     // FruitPoolProperties.mainFruitPool = new int[mainFruitSprites.Length]
+    //     for(int i = 0; i < mainFruitSprites.Length; i++)
+    //     {    
+    //         mainFruitPool[i] = i;
+    //         unaddedFruit.Add(i);
+    //     }
+    // }
 
-    void AddToCropPool(int amountToAdd)
-    {
-        for(int i = 0; i < amountToAdd; i++)
-        {
-            randomIndex = Random.Range(0, unaddedFruit.Count);
-            cropFruitPool.Add(unaddedFruit[randomIndex]);
-            unaddedFruit.RemoveAt(randomIndex);
-        }
-    }
+    // void AddToCropPool(int amountToAdd)
+    // {
+    //     for(int i = 0; i < amountToAdd; i++)
+    //     {
+    //         randomIndex = Random.Range(0, unaddedFruit.Count);
+    //         cropFruitPool.Add(unaddedFruit[randomIndex]);
+    //         unaddedFruit.RemoveAt(randomIndex);
+    //     }
+    // }
 
     
 }
