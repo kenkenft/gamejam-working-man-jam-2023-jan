@@ -7,13 +7,16 @@ public class PlayerOverlay : MonoBehaviour
 {
     public GameObject[] trucks = new GameObject[4];
     TruckProperties[] trucksProperties = new TruckProperties[4];
+    FruitPoolProperties fruitPoolProperties;
     ScoreTextProperties scoreTextProperties;
     int fillAmount = 20;
     void Start()
     {
+        fruitPoolProperties = FindObjectOfType<FruitPoolProperties>();
         for(int i = 0 ; i< trucks.Length; i++)
         {
             trucksProperties[i] = trucks[i].GetComponentInChildren<TruckProperties>();
+            trucksProperties[i].SetFruitPoolPropertiesRef(fruitPoolProperties);
         }
         scoreTextProperties = GetComponentInChildren<ScoreTextProperties>();
     }

@@ -5,13 +5,10 @@ using UnityEngine;
 public class CropProperties : MonoBehaviour
 {
     bool isHarvestable = true;
+    FruitPoolProperties fruitPoolProperties;
     Collider2D stalkCol;
     SpriteRenderer fruitSpriteRenderer;
-    Sprite fruitSprite;
-    public List<Sprite> mainFruitSprites = new List<Sprite>{};
-    List<int> cropFruitPool = new List<int>{};
     int harvestProgress = 80, currFruitID = -1;
-    // List<int> validFruitPool = new List<int>{};
     float timeToGrow = 2.5f;
     WaitForSecondsRealtime delay = new WaitForSecondsRealtime(2.5f);
     
@@ -55,16 +52,16 @@ public class CropProperties : MonoBehaviour
             {
                 fruitSpriteRenderer = spriteRenderer;
                 // Debug.Log("Fruit Position Found! " + fruitSpriteRenderer.name);
-                // fruitSprite = spriteRenderer.sprite;
             }
         }
     }
 
-    public void UpdateCropPool(int newFruitID)
+    public void SetFruitPoolPropertiesRef(FruitPoolProperties fruitPoolPropertiesRef)
     {
-        cropFruitPool.Add(newFruitID);
-        Debug.Log("Fruit Added! ID: " + cropFruitPool[cropFruitPool.Count-1]);
+        fruitPoolProperties = fruitPoolPropertiesRef;
     }
+
+
 
     public void GrowRandomFruit()
     {
@@ -73,11 +70,11 @@ public class CropProperties : MonoBehaviour
         
         if(!isNewFruitSelected)
         {
-            randomIndex = Random.Range(0, cropFruitPool.Count);
-            if(randomIndex != currFruitID || cropFruitPool.Count == 1)
+            randomIndex = Random.Range(0, fruitPoolProperties.cropFruitPool.Count);
+            if(randomIndex != currFruitID || fruitPoolProperties.cropFruitPool.Count == 1)
             {
-                currFruitID = cropFruitPool[randomIndex];
-                fruitSpriteRenderer.sprite = mainFruitSprites[currFruitID];
+                currFruitID = fruitPoolProperties.cropFruitPool[randomIndex];
+                fruitSpriteRenderer.sprite = fruitPoolProperties.mainFruitSprites[currFruitID];
                 // fruitSprite = mainFruitSprites[currFruitID];
                 isNewFruitSelected = true;
             }
