@@ -6,7 +6,9 @@ public class CropProperties : MonoBehaviour
 {
     bool isHarvestable = true;
     Collider2D stalkCol;
-    SpriteRenderer fruitSprite;
+    SpriteRenderer fruitSpriteRenderer;
+    Sprite fruitSprite;
+    List<int> cropFruitPool = new List<int>{};
     int harvestProgress = 80, currFruitID = 0;
     // List<int> validFruitPool = new List<int>{};
     float timeToGrow = 2.5f;
@@ -16,11 +18,14 @@ public class CropProperties : MonoBehaviour
     {
         stalkCol = GetComponentInChildren<Collider2D>();
         SpriteRenderer[] cropSprites = GetComponentsInChildren<SpriteRenderer>();
-        foreach(SpriteRenderer sprite in cropSprites)
+        foreach(SpriteRenderer spriteRenderer in cropSprites)
         {
             // Debug.Log("Sprite name: " + sprite.name);
-            if(sprite.name == "FruitPosition")
-                fruitSprite = sprite;
+            if(spriteRenderer.name == "FruitPosition")
+            {
+                fruitSpriteRenderer = spriteRenderer;
+                fruitSprite = spriteRenderer.sprite;
+            }
         }
 
         // delay = new WaitForSeconds(timeToGrow);
@@ -34,7 +39,7 @@ public class CropProperties : MonoBehaviour
         {
             // Debug.Log("Fruit Harvested!");
             isHarvestable = false;
-            fruitSprite.enabled = false;
+            fruitSpriteRenderer.enabled = false;
             StartCoroutine(RegrowCrop(timeToGrow)); 
         }
         return harvestProgress;
@@ -50,6 +55,12 @@ public class CropProperties : MonoBehaviour
         return currFruitID;
     }
 
+    public void UpdateCropPool(int newFruitID)
+    {
+        cropFruitPool.Add(newFruitID);
+        Debug.Log("Fruit Added! ID: " + cropFruitPool[cropFruitPool.Count-1]);
+    }
+
     IEnumerator RegrowCrop(float cropGrowingTime)
     {
         // Debug.Log("RegrowCrop Coroutine started. Waiting.");
@@ -59,7 +70,7 @@ public class CropProperties : MonoBehaviour
         harvestProgress = 80;
         isHarvestable = true;
         // TODO Method that changes the crop's fruit type 
-        fruitSprite.enabled = true;
+        fruitSpriteRenderer.enabled = true;
         // Debug.Log("Plant has finished growing!");
         yield return null;
     }
