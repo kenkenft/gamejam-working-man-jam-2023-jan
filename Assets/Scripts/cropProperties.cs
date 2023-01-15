@@ -71,7 +71,7 @@ public class CropProperties : MonoBehaviour
         if(!isNewFruitSelected)
         {
             randomIndex = Random.Range(0, fruitPoolProperties.cropFruitPool.Count);
-            if(randomIndex != currFruitID || fruitPoolProperties.cropFruitPool.Count == 1)
+            if(fruitPoolProperties.cropFruitPool[randomIndex] != currFruitID || fruitPoolProperties.cropFruitPool.Count == 1)
             {
                 currFruitID = fruitPoolProperties.cropFruitPool[randomIndex];
                 fruitSpriteRenderer.sprite = fruitPoolProperties.mainFruitSprites[currFruitID];
