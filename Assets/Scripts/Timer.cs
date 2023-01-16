@@ -5,10 +5,10 @@ using TMPro;
 
 public class Timer : MonoBehaviour
 {
-    int timeLeft = 20;
+    int timeLeft = 6666, totalTime = 0;
     UIManager uIManager;
     TextMeshProUGUI timerText;
-    WaitForSecondsRealtime timerDelay = new WaitForSecondsRealtime(1.0f);
+    WaitForSecondsRealtime timerDelay = new WaitForSecondsRealtime(0f);
     void Start()
     {
         timerText = GetComponentInChildren<TextMeshProUGUI>();
@@ -23,10 +23,11 @@ public class Timer : MonoBehaviour
         {
             yield return timerDelay;
             timeLeft--;
+            totalTime++;
             timerText.SetText("Time: " + timeLeft);
         }
         StopCoroutine("Countdown");
-        uIManager.TriggerEndgame();
+        uIManager.TriggerEndgame(totalTime);
         yield return null;
     }
 

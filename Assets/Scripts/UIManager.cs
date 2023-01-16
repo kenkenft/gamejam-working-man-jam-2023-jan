@@ -18,11 +18,11 @@ public class UIManager : MonoBehaviour
         playerOverlay.UpdateCorrectTruck(truckTarget, fruitID);
     }
 
-    public void TriggerEndgame()
+    public void TriggerEndgame(int totalTime)
     {
-        Debug.Log("Time Up! Game is over!");
         uIEndgame.ToggleEndgameCanvas(true);
         uIEndgame.SetPlayerScoreText(playerOverlay.GetFinalScore());
+        uIEndgame.SetTotalTime(totalTime);
     }
 
 }

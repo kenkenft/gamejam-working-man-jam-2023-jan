@@ -9,7 +9,7 @@ public class UIEndgame : MonoBehaviour
 {
     
     Canvas uIEndgameCanvas;
-    TextMeshProUGUI playerScoreText;
+    TextMeshProUGUI playerScoreText, totalTimeText;
     
     Button restartButton, mainMenuButton;
     
@@ -29,8 +29,21 @@ public class UIEndgame : MonoBehaviour
         TextMeshProUGUI[] allTexts = GetComponentsInChildren<TextMeshProUGUI>();
         foreach(TextMeshProUGUI text in allTexts)
         {
-            if(text.name == "PlayerScoreText")
-                playerScoreText = text;
+            switch(text.name)
+            {
+                case "PlayerScoreText":
+                {
+                    playerScoreText = text;
+                    break;
+                }
+                case "TotalTimeText":
+                {
+                    totalTimeText = text;
+                    break;
+                }
+                default: 
+                    break;
+            }
         }
     }
 
@@ -55,5 +68,29 @@ public class UIEndgame : MonoBehaviour
     {
         string tempString = finalScore + " points";
         playerScoreText.SetText(tempString);
+    }
+
+    public void SetTotalTime(int totalTime)
+    {
+        string[] buffers = {"", ":", ":"};
+        // Using integer division and discarding the remainder for hours and minutes, whereas seconds keeps the remainder instead.
+        int hours = totalTime/3600,
+            tempIntA = totalTime - (hours * 3600), 
+            minutes = tempIntA / 60,
+            seconds = tempIntA % 60;
+        
+        if(hours < 10)
+            buffers[0] = "0";
+        if(minutes < 10)
+            buffers[1] = ":0";
+        if(seconds < 10)
+            buffers[2] = ":0";
+
+        string tempString;
+        if(totalTime >= 86400)
+            tempString = "Far too long";
+        else
+            tempString = buffers[0] + hours + buffers[1] + minutes + buffers[2] + seconds;
+        totalTimeText.SetText(tempString);
     }
 }

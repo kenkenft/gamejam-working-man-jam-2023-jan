@@ -10,7 +10,7 @@ public class PlayerOverlay : MonoBehaviour
     FruitPoolProperties fruitPoolProperties;
     ScoreTextProperties scoreTextProperties;
     Timer timer;
-    int fillAmount = 20;
+    int fillAmount = 100/5;
     void Start()
     {
         fruitPoolProperties = FindObjectOfType<FruitPoolProperties>();
