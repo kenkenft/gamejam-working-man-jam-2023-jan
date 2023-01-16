@@ -21,6 +21,7 @@ public class UIManager : MonoBehaviour
     public void TriggerEndgame()
     {
         Debug.Log("Time Up! Game is over!");
+        uIEndgame.ToggleEndgameCanvas(true);
     }
 
 }
