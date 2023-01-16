@@ -10,7 +10,7 @@ public class CropProperties : MonoBehaviour
     SpriteRenderer fruitSpriteRenderer;
     int harvestProgress = 80, currFruitID = -1;
     float timeToGrow = 2.5f;
-    WaitForSecondsRealtime delay = new WaitForSecondsRealtime(2.5f);
+    WaitForSecondsRealtime delay = new WaitForSecondsRealtime(1f);
     
     void Start()
     {

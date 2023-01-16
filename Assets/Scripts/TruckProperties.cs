@@ -52,6 +52,11 @@ public class TruckProperties : MonoBehaviour
         // }
     }
 
+    public int GetFruitBonusTracker(int index)
+    {
+        return fruitBonusTracker[index];
+    }
+
     public int CalcTruckScore()
     { 
         // Debug.Log("CalcTruckScore called!");

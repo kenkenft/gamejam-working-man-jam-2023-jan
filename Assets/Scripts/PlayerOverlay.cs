@@ -11,6 +11,7 @@ public class PlayerOverlay : MonoBehaviour
     ScoreTextProperties scoreTextProperties;
     Timer timer;
     int fillAmount = 100/5;
+    List<int> deliveredFruitsList = new List<int>{};
     void Start()
     {
         fruitPoolProperties = FindObjectOfType<FruitPoolProperties>();
@@ -58,12 +59,37 @@ public class PlayerOverlay : MonoBehaviour
         if(trucksProperties[truckID].IsTruckFull())
         {
             scoreTextProperties.UpdateScore(trucksProperties[truckID].CalcTruckScore());
+            UpdateTotalDeliveredFruits(truckID);
             trucksProperties[truckID].ResetTruckProperties();
+        }
+    }
+
+    void UpdateTotalDeliveredFruits(int truckID)
+    {
+        int checkListLength = deliveredFruitsList.Count - 1;
+        for(int i = 0; i < fruitPoolProperties.cropFruitPool.Count; i++)
+        {
+            if(i > checkListLength) //Add to list if new fruit type has been delivered
+            {
+                deliveredFruitsList.Add(0);
+                Debug.Log("New fruit added to totalDeliveredFruits list: " + i);
+            }
+            deliveredFruitsList[i] += trucksProperties[truckID].GetFruitBonusTracker(i);
         }
     }
 
     public int GetFinalScore()
     {
         return scoreTextProperties.GetCurrentScore();
+    }
+
+    public int GetTotalFruit()
+    {
+        int totalFruit = 0;
+
+        foreach(int tracker in deliveredFruitsList)
+            totalFruit += tracker;
+
+        return totalFruit;
     }
 }

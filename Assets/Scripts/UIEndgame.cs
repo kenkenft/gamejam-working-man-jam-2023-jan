@@ -9,7 +9,7 @@ public class UIEndgame : MonoBehaviour
 {
     
     Canvas uIEndgameCanvas;
-    TextMeshProUGUI playerScoreText, totalTimeText;
+    TextMeshProUGUI playerScoreText, totalTimeText, totalFruitText;
     
     Button restartButton, mainMenuButton;
     
@@ -39,6 +39,11 @@ public class UIEndgame : MonoBehaviour
                 case "TotalTimeText":
                 {
                     totalTimeText = text;
+                    break;
+                }
+                case "TotalFruitText":
+                {
+                    totalFruitText = text;
                     break;
                 }
                 default: 
@@ -92,5 +97,11 @@ public class UIEndgame : MonoBehaviour
         else
             tempString = buffers[0] + hours + buffers[1] + minutes + buffers[2] + seconds;
         totalTimeText.SetText(tempString);
+    }
+
+    public void SetTotalFruitText(int totalFruit)
+    {
+        string tempString = totalFruit + "";
+        totalFruitText.SetText(tempString);
     }
 }

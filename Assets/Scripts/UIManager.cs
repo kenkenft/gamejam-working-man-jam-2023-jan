@@ -23,6 +23,7 @@ public class UIManager : MonoBehaviour
         uIEndgame.ToggleEndgameCanvas(true);
         uIEndgame.SetPlayerScoreText(playerOverlay.GetFinalScore());
         uIEndgame.SetTotalTime(totalTime);
+        uIEndgame.SetTotalFruitText(playerOverlay.GetTotalFruit());
     }
 
 }

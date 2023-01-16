@@ -5,10 +5,10 @@ using TMPro;
 
 public class Timer : MonoBehaviour
 {
-    int timeLeft = 6666, totalTime = 0;
+    int timeLeft = 30, totalTime = 0;
     UIManager uIManager;
     TextMeshProUGUI timerText;
-    WaitForSecondsRealtime timerDelay = new WaitForSecondsRealtime(0f);
+    WaitForSecondsRealtime timerDelay = new WaitForSecondsRealtime(1.0f);
     void Start()
     {
         timerText = GetComponentInChildren<TextMeshProUGUI>();
