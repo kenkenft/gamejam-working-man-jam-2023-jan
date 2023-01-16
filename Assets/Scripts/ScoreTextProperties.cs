@@ -17,4 +17,9 @@ public class ScoreTextProperties : MonoBehaviour
         currentScore += truckScore;
         scoreText.SetText("Score: " + currentScore);
     }
+
+    public int GetCurrentScore()
+    {
+        return currentScore;
+    }
 }

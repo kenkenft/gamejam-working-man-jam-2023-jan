@@ -22,6 +22,7 @@ public class UIManager : MonoBehaviour
     {
         Debug.Log("Time Up! Game is over!");
         uIEndgame.ToggleEndgameCanvas(true);
+        uIEndgame.SetPlayerScoreText(playerOverlay.GetFinalScore());
     }
 
 }

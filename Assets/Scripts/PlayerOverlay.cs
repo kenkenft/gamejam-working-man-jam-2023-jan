@@ -61,4 +61,9 @@ public class PlayerOverlay : MonoBehaviour
             trucksProperties[truckID].ResetTruckProperties();
         }
     }
+
+    public int GetFinalScore()
+    {
+        return scoreTextProperties.GetCurrentScore();
+    }
 }

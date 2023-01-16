@@ -5,7 +5,7 @@ using TMPro;
 
 public class Timer : MonoBehaviour
 {
-    int timeLeft = 5;
+    int timeLeft = 20;
     UIManager uIManager;
     TextMeshProUGUI timerText;
     WaitForSecondsRealtime timerDelay = new WaitForSecondsRealtime(1.0f);

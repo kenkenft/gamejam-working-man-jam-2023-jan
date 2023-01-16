@@ -9,7 +9,7 @@ public class UIEndgame : MonoBehaviour
 {
     
     Canvas uIEndgameCanvas;
-    TextMeshProUGUI playerScore;
+    TextMeshProUGUI playerScoreText;
     
     Button restartButton, mainMenuButton;
     
@@ -30,7 +30,7 @@ public class UIEndgame : MonoBehaviour
         foreach(TextMeshProUGUI text in allTexts)
         {
             if(text.name == "PlayerScoreText")
-                playerScore = text;
+                playerScoreText = text;
         }
     }
 
@@ -49,5 +49,11 @@ public class UIEndgame : MonoBehaviour
     public void ToggleEndgameCanvas(bool state)
     {
         uIEndgameCanvas.enabled = state;
+    }
+
+    public void SetPlayerScoreText(int finalScore)
+    {
+        string tempString = finalScore + " points";
+        playerScoreText.SetText(tempString);
     }
 }
