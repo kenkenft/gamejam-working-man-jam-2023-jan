@@ -92,4 +92,9 @@ public class PlayerOverlay : MonoBehaviour
 
         return totalFruit;
     }
+
+    public List<int> GetDeliveredFruit()
+    {
+        return deliveredFruitsList;
+    }
 }
