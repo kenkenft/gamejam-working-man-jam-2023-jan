@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMove : MonoBehaviour
 {
     Rigidbody2D rig;
-    float playerSpeedBase = 2f, 
+    float playerSpeedBase = 4f, 
           playerJumpForceBase = 10f;
     Vector2 mask;
     

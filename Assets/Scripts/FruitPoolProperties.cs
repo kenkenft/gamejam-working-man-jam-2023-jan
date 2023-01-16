@@ -32,7 +32,6 @@ public class FruitPoolProperties : MonoBehaviour
                                         Resources.Load<Sprite>("Bananas_0"),
                                         Resources.Load<Sprite>("Cherries_0"),
                                         Resources.Load<Sprite>("Kiwi_0"),
-                                        Resources.Load<Sprite>("Apple_0"),
                                         Resources.Load<Sprite>("Melon_0"),
                                         Resources.Load<Sprite>("Orange_0"),
                                         Resources.Load<Sprite>("Pineapple_0"),
@@ -44,7 +43,6 @@ public class FruitPoolProperties : MonoBehaviour
     public void SetUpUnaddedFruit()
     {
         mainFruitPool = new int[mainFruitSprites.Length];
-        // FruitPoolProperties.mainFruitPool = new int[mainFruitSprites.Length]
         for(int i = 0; i < mainFruitSprites.Length; i++)
         {    
             mainFruitPool[i] = i;

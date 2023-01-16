@@ -13,10 +13,7 @@ public class UIEndgame : MonoBehaviour
     FruitPoolProperties fruitPoolProperties;
     Button restartButton, mainMenuButton;
     public GameObject fruitInfo, fruitDeliveredBreakdown;
-    int xScreenRange = (Screen.width/80) *100, yScreenRange = 50;
     
-
-    // Start is called before the first frame update
     void Start()
     {
         uIEndgameCanvas = GetComponentInChildren<Canvas>();
@@ -111,17 +108,11 @@ public class UIEndgame : MonoBehaviour
     public void SetFruitText(List<int> deliveredFruits)
     {
         int totalDeliveredFruit = 0, amountFruitTypes = deliveredFruits.Count;
-        bool areRowsSplit = false, shouldChangeRow = false;
-        if(amountFruitTypes > 4)
-            areRowsSplit = true;
-        // GameObject fruitInfoInstance;
 
         for(int i = 0; i < deliveredFruits.Count; i++)
         {    
             totalDeliveredFruit += deliveredFruits[i];
-            // if(areRowsSplit && shouldChangeRow)
-            GameObject fruitInfoInstance = Instantiate(fruitInfo, fruitDeliveredBreakdown.transform.position, fruitDeliveredBreakdown.transform.rotation, fruitDeliveredBreakdown.transform);
-            // GameObject fruitInfoInstance = Instantiate(fruitInfo);
+            GameObject fruitInfoInstance = Instantiate(fruitInfo, fruitInfo.transform.position, fruitInfo.transform.rotation, fruitDeliveredBreakdown.transform);
             fruitInfoInstance.GetComponentInChildren<Image>().sprite = fruitPoolProperties.mainFruitSprites[fruitPoolProperties.cropFruitPool[i]];
             fruitInfoInstance.GetComponentInChildren<TextMeshProUGUI>().SetText("x" + deliveredFruits[i]);
         }
