@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 7163763691353767553}
   - component: {fileID: 7163763691353767556}
   - component: {fileID: 9205050737257412473}
+  - component: {fileID: 1291947624}
+  - component: {fileID: 1291947625}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -146,3 +148,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8b9b7bce48699041830b0011d718b16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!114 &1291947624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7163763691353767552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 963193103e97b6645b28ae34a3a52f51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1291947625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7163763691353767552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f83d67aa4a97934da362a4489b675b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isHarvesting: 0
+  harvestCooldown: 2
+  lastSuccessfulPressTime: 0
+  currButtonPressTime: 0
+  harvestPower: 20
+  harvestProgress: 100

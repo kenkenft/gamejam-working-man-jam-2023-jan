@@ -37,5 +37,7 @@ public class PlayerMain : MonoBehaviour
             }
             
         }
+
+        playerMove.VelocityDecay();
     }
 }
