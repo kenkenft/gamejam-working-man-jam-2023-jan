@@ -8,11 +8,12 @@ public class CropManager : MonoBehaviour
     public GameObject cropPrefab;
     FruitPoolProperties fruitPoolProperties;
     CropProperties[] allCropsProperties; 
+    WaitForSecondsRealtime addFruitDelay = new WaitForSecondsRealtime(10.0f);
     void Start()
     {
         fruitPoolProperties = FindObjectOfType<FruitPoolProperties>();
         fruitPoolProperties.SetUpUnaddedFruit();
-        fruitPoolProperties.AddToCropPool(2);
+        fruitPoolProperties.AddToCropPool(5);
         
         // foreach(int fruit in fruitPoolProperties.cropFruitPool)
         //     Debug.Log("FruitID: " + fruit + ". Fruit name: " + fruitPoolProperties.mainFruitSprites[fruit]);
@@ -25,6 +26,21 @@ public class CropManager : MonoBehaviour
             crop.SetUpSprites();
             crop.GrowRandomFruit();
         }
+
+        StartCoroutine("AddFruitToPool",fruitPoolProperties.unaddedFruit.Count);
+    }
+
+    IEnumerator AddFruitToPool(int unaddedFruitLeft)
+    {
+        while(unaddedFruitLeft !=0)
+        {
+            yield return addFruitDelay;
+            fruitPoolProperties.AddToCropPool(1);
+            unaddedFruitLeft--;
+            // Debug.Log("Coroutine AddFruitToPool: Fruit Added to pool! Fruit unadded: "+ unaddedFruitLeft);
+        }
+        StopCoroutine("AddFruitToPool");
+        yield return null;
     }
     
 }
