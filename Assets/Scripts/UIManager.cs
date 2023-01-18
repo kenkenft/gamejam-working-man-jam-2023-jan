@@ -13,10 +13,10 @@ public class UIManager : MonoBehaviour
         uIEndgame.ToggleEndgameCanvas(false);
     }
 
-    public void UpdateTruck(string truckTarget, int fruitID)
+    public void UpdateTruck(string truckTargetString, int fruitID)
     {
         // Debug.Log("Truck Progress updated! " + truckTarget);
-        playerOverlay.UpdateCorrectTruck(truckTarget, fruitID);
+        playerOverlay.UpdateCorrectTruck(truckTargetString, fruitID);
     }
 
     public void TriggerEndgame(int totalTime)

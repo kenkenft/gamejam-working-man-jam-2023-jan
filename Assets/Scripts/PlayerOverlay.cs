@@ -37,24 +37,28 @@ public class PlayerOverlay : MonoBehaviour
     }
 
 
-    public void UpdateCorrectTruck(string targetTruck, int fruitID)
+    public void UpdateCorrectTruck(string truckTargetString, int fruitID)
     {
-        int truckID = GetCorrectTruckID(targetTruck);
+        int truckID = GetCorrectTruckID(truckTargetString);
         LoadAndCheckTruck(truckID, fruitID);
     }
 
-    int GetCorrectTruckID(string targetTruck)
+    int GetCorrectTruckID(string truckTargetString)
     {
-        Debug.Log("target truck:" + targetTruck);
+        
+        Debug.Log("truckTargetString: " + truckTargetString);
+        
+        char targetTruck = ParseHarvestCharacter(truckTargetString);
+        
         switch(targetTruck) // Would this be better as a dictionary?
         {
-            case "h":
+            case 'a':
                 return 0;
-            case "j":
+            case 's':
                 return 1;
-            case "k":
+            case 'd':
                 return 2;
-            case "l":
+            case 'f':
                 return 3;
             default:
                 {
@@ -63,6 +67,19 @@ public class PlayerOverlay : MonoBehaviour
                 }
         }
     }
+
+    char ParseHarvestCharacter(string stringInput)
+    {
+        char parsedString = 'a';
+        foreach(char letter in stringInput)
+        {
+            if(letter.Equals('a') || letter.Equals('s') || letter.Equals('d') || letter.Equals('f'))
+                parsedString = letter;
+        }
+        
+        return parsedString;
+    }
+
 
     void LoadAndCheckTruck(int truckID, int fruitID)
     {
