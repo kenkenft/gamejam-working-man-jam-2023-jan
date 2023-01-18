@@ -1,19 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
     int timeLeft = 100, totalTime = 0;
     UIManager uIManager;
-    TextMeshProUGUI timerText;
+    Text timerText;
     WaitForSecondsRealtime timerDelay = new WaitForSecondsRealtime(1.0f);
     void Start()
     {
-        timerText = GetComponentInChildren<TextMeshProUGUI>();
+        timerText = GetComponentInChildren<Text>();
         uIManager = GetComponentInParent<UIManager>();
-        timerText.SetText("Time: " + timeLeft);
+        timerText.text = "Time: " + timeLeft;
         StartCoroutine("Countdown");
     }
 
@@ -24,7 +24,7 @@ public class Timer : MonoBehaviour
             yield return timerDelay;
             timeLeft--;
             totalTime++;
-            timerText.SetText("Time: " + timeLeft);
+            timerText.text = "Time: " + timeLeft;
         }
         StopCoroutine("Countdown");
         uIManager.TriggerEndgame(totalTime);
