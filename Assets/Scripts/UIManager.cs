@@ -6,11 +6,13 @@ public class UIManager : MonoBehaviour
 {
     PlayerOverlay playerOverlay;
     UIEndgame uIEndgame;
+    UITitle uITitle;
     void Start()
     {
         playerOverlay = GetComponentInChildren<PlayerOverlay>();
         uIEndgame = GetComponentInChildren<UIEndgame>();
         uIEndgame.ToggleEndgameCanvas(false);
+        uITitle = GetComponentInChildren<UITitle>();
     }
 
     public void UpdateTruck(string truckTargetString, int fruitID)
@@ -26,6 +28,11 @@ public class UIManager : MonoBehaviour
         uIEndgame.SetTotalTime(totalTime);
         // uIEndgame.SetTotalFruitText(playerOverlay.GetTotalFruit());
         uIEndgame.SetFruitText(playerOverlay.GetDeliveredFruit());
+    }
+
+    public void SetUpGame()
+    {
+        Debug.Log("Game has started!");
     }
 
 }
