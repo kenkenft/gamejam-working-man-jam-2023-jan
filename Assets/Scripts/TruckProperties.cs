@@ -8,8 +8,10 @@ public class TruckProperties : MonoBehaviour
     
     int truckFullness = 0, deliveryBonusScore = 0;
     FruitPoolProperties fruitPoolProperties;
-    int[] fruitBonusTracker = new int[0],
-            deliveryBonusMultiplier = {0, 100, 103, 106, 109, 115, 124, 139, 163, 202, 265};
+    int[] deliveryBonusMultiplier = {0, 100, 103, 106, 109, 115, 124, 139, 163, 202, 265};
+    // int[] deliveryBonusMultiplier = {0, 100, 103, 106, 109, 115, 124, 139, 163, 202, 265},
+    //     fruitBonusTracker = new int[0];
+    public List<int> fruitBonusTracker = new List<int>{};
     Text truckProgressText;
     void Start()
     {
@@ -35,15 +37,18 @@ public class TruckProperties : MonoBehaviour
 
     public void IncrementBonusTracker(int fruitID)
     {
-        if(fruitBonusTracker.Length == 0)
-        {
-            fruitBonusTracker = new int[fruitPoolProperties.cropFruitPool.Count];
-            ResetBonusTracker();
-        }
+        // if(fruitBonusTracker.Length == 0)
+        // {
+        //     fruitBonusTracker = new int[fruitPoolProperties.cropFruitPool.Count];
+        //     ResetBonusTracker();
+        // }
         for(int i = 0; i < fruitPoolProperties.cropFruitPool.Count; i++)
         {
             if(fruitPoolProperties.cropFruitPool[i] == fruitID)
+            {    
+                ExpandFruitBonusTrackerList();
                 fruitBonusTracker[i]++;
+            }
         }
 
         // for(int i = 0; i< fruitBonusTracker.Length; i++)
@@ -52,8 +57,19 @@ public class TruckProperties : MonoBehaviour
         // }
     }
 
+    public void ExpandFruitBonusTrackerList()
+    {
+        int trackerLength = fruitBonusTracker.Count-1; 
+        for(int i = 0; i < fruitPoolProperties.cropFruitPool.Count; i++)
+        {
+            if(i > trackerLength)
+                fruitBonusTracker.Add(0);
+        }
+    }
+
     public int GetFruitBonusTracker(int index)
     {
+        ExpandFruitBonusTrackerList();
         return fruitBonusTracker[index];
     }
 
@@ -79,7 +95,8 @@ public class TruckProperties : MonoBehaviour
 
     void ResetBonusTracker()
     {
-        for(int i = 0; i < fruitBonusTracker.Length; i++)
+        // for(int i = 0; i < fruitBonusTracker.Length; i++)
+        for(int i = 0; i < fruitBonusTracker.Count; i++)
             fruitBonusTracker[i] = 0;
     }
 

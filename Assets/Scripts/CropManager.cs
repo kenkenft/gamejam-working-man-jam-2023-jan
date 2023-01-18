@@ -13,7 +13,7 @@ public class CropManager : MonoBehaviour
     {
         fruitPoolProperties = FindObjectOfType<FruitPoolProperties>();
         fruitPoolProperties.SetUpUnaddedFruit();
-        fruitPoolProperties.AddToCropPool(5);
+        fruitPoolProperties.AddToCropPool(2);
         
         // foreach(int fruit in fruitPoolProperties.cropFruitPool)
         //     Debug.Log("FruitID: " + fruit + ". Fruit name: " + fruitPoolProperties.mainFruitSprites[fruit]);
