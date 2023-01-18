@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
  
 
 public class UIEndgame : MonoBehaviour
 {
     
     Canvas uIEndgameCanvas;
-    TextMeshProUGUI playerScoreText, totalTimeText, totalFruitText;
+    Text playerScoreText, totalTimeText, totalFruitText;
     FruitPoolProperties fruitPoolProperties;
     Button restartButton, mainMenuButton;
     public GameObject fruitInfo, fruitDeliveredBreakdown;
@@ -26,8 +25,9 @@ public class UIEndgame : MonoBehaviour
 
     void SetUpTextRefs()
     {
-        TextMeshProUGUI[] allTexts = GetComponentsInChildren<TextMeshProUGUI>();
-        foreach(TextMeshProUGUI text in allTexts)
+        Text[] allTexts = GetComponentsInChildren<Text>();
+        
+        foreach(Text text in allTexts)
         {
             switch(text.name)
             {
@@ -72,7 +72,7 @@ public class UIEndgame : MonoBehaviour
     public void SetPlayerScoreText(int finalScore)
     {
         string tempString = finalScore + " points";
-        playerScoreText.SetText(tempString);
+        playerScoreText.text = tempString;
     }
 
     public void SetTotalTime(int totalTime)
@@ -96,13 +96,13 @@ public class UIEndgame : MonoBehaviour
             tempString = "Far too long";
         else
             tempString = buffers[0] + hours + buffers[1] + minutes + buffers[2] + seconds;
-        totalTimeText.SetText(tempString);
+        totalTimeText.text = tempString;
     }
 
     public void SetTotalFruitText(int totalFruit)
     {
         string tempString = totalFruit + "";
-        totalFruitText.SetText(tempString);
+        totalFruitText.text = tempString;
     }
 
     public void SetFruitText(List<int> deliveredFruits)
@@ -114,10 +114,10 @@ public class UIEndgame : MonoBehaviour
             totalDeliveredFruit += deliveredFruits[i];
             GameObject fruitInfoInstance = Instantiate(fruitInfo, fruitInfo.transform.position, fruitInfo.transform.rotation, fruitDeliveredBreakdown.transform);
             fruitInfoInstance.GetComponentInChildren<Image>().sprite = fruitPoolProperties.mainFruitSprites[fruitPoolProperties.cropFruitPool[i]];
-            fruitInfoInstance.GetComponentInChildren<TextMeshProUGUI>().SetText("x" + deliveredFruits[i]);
+            fruitInfoInstance.GetComponentInChildren<Text>().text = "x" + deliveredFruits[i];
         }
         
         string tempString = totalDeliveredFruit + "";
-        totalFruitText.SetText(tempString);
+        totalFruitText.text = tempString;
     }
 }

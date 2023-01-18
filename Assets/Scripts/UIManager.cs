@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     {
         playerOverlay = GetComponentInChildren<PlayerOverlay>();
         uIEndgame = GetComponentInChildren<UIEndgame>();
+        uIEndgame.ToggleEndgameCanvas(false);
     }
 
     public void UpdateTruck(string truckTarget, int fruitID)
