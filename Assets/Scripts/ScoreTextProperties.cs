@@ -1,21 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
+
 
 public class ScoreTextProperties : MonoBehaviour
 {
     int currentScore = 0;
-    TextMeshProUGUI scoreText;
+    Text scoreText;
     void Start()
     {
-        scoreText = GetComponentInChildren<TextMeshProUGUI>();
+        scoreText = GetComponentInChildren<Text>();
+        scoreText.text = "Score: " + currentScore;
     }
 
     public void UpdateScore(int truckScore)
     {
         currentScore += truckScore;
-        scoreText.SetText("Score: " + currentScore);
+        scoreText.text = "Score: " + currentScore;
     }
 
     public int GetCurrentScore()
