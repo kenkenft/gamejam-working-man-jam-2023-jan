@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 
 public class TruckProperties : MonoBehaviour
 {
@@ -10,10 +10,10 @@ public class TruckProperties : MonoBehaviour
     FruitPoolProperties fruitPoolProperties;
     int[] fruitBonusTracker = new int[0],
             deliveryBonusMultiplier = {0, 100, 103, 106, 109, 115, 124, 139, 163, 202, 265};
-    TextMeshProUGUI truckProgressText;
+    Text truckProgressText;
     void Start()
     {
-        truckProgressText = GetComponentInChildren<TextMeshProUGUI>();
+        truckProgressText = GetComponentInChildren<Text>();
     }
 
     public void UpdateTruckFullness(int amount)
@@ -24,7 +24,7 @@ public class TruckProperties : MonoBehaviour
 
     void UpdateProgressText()
     {
-        truckProgressText.SetText(truckFullness + "%");
+        truckProgressText.text = truckFullness + "%";
     }
 
     public bool IsTruckFull()
