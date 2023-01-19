@@ -35,7 +35,7 @@ public class UIManager : MonoBehaviour
         uIEndgame.SetFruitText(playerOverlay.GetDeliveredFruit());
     }
 
-    public void SetUpGameUI()
+    public void SetUpGameUI(int startTime)
     {
         uITitle.DisableTitleCanvases();
         uITitle.ToggleButtonEnabled(false);
@@ -43,7 +43,7 @@ public class UIManager : MonoBehaviour
         uIEndgame.SetPlayerScoreText(0);
         playerOverlay.TogglePlayerOverlayCanvas(true);
         playerOverlay.ResetOverlay();
-        playerOverlay.StartTimer(15);
+        playerOverlay.StartTimer(startTime);
         
     }
 

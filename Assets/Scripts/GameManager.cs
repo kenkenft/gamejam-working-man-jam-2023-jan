@@ -32,8 +32,8 @@ public class GameManager : MonoBehaviour
         playerMain.SetPlayerStartPos();
         fruitPoolProperties.SetUp();
         cropManager.SetUpCropProperties();
-        uIManager.SetUpGameUI();
         StartCoroutine(fruitPoolProperties.AddFruitToPool());
+        uIManager.SetUpGameUI(6666);
     }
 
     public void TriggerEndgame()

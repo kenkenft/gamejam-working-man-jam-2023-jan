@@ -9,7 +9,7 @@ public class FruitPoolProperties : MonoBehaviour
     public int[] mainFruitPool;
     public List<int> cropFruitPool = new List<int>{}, unaddedFruit = new List<int>{};
     int fruitLeft = 0;
-    WaitForSecondsRealtime addFruitDelay = new WaitForSecondsRealtime(10.0f);
+    WaitForSecondsRealtime addFruitDelay = new WaitForSecondsRealtime(5.0f);
     // private static FruitPoolProperties _instance;
     // public static FruitPoolProperties Instance
     // {
@@ -44,6 +44,7 @@ public class FruitPoolProperties : MonoBehaviour
         ResetLists();
         SetUpUnaddedFruit();
         AddToCropPool(2);
+        fruitLeft = unaddedFruit.Count;
     }
 
     void ResetLists()
@@ -87,5 +88,4 @@ public class FruitPoolProperties : MonoBehaviour
             unaddedFruit.RemoveAt(randomIndex);
         }
     }
-
 }

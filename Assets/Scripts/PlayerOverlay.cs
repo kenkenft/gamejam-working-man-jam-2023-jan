@@ -49,7 +49,8 @@ public class PlayerOverlay : MonoBehaviour
             trucksProperties[i].ClearList();
             trucksProperties[i].ResetTruckProperties();
         }
-        scoreTextProperties.UpdateScore(0);
+        scoreTextProperties.ResetScore();
+        timer.ResetTotalTime();
     }
 
     public void UpdateCorrectTruck(string truckTargetString, int fruitID)

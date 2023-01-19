@@ -20,6 +20,12 @@ public class ScoreTextProperties : MonoBehaviour
         scoreText.text = "Score: " + currentScore;
     }
 
+    public void ResetScore()
+    {
+        currentScore = 0;
+        scoreText.text = "Score: " + currentScore;
+    }
+
     public int GetCurrentScore()
     {
         return currentScore;
