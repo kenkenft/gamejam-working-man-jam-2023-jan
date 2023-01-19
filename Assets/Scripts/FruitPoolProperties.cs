@@ -9,24 +9,22 @@ public class FruitPoolProperties : MonoBehaviour
     public int[] mainFruitPool;
     public List<int> cropFruitPool = new List<int>{}, unaddedFruit = new List<int>{};
 
-    private static FruitPoolProperties _instance;
-
-    public static FruitPoolProperties Instance
-    {
-        get
-        {
-            if(_instance == null)
-            {
-                _instance = GameObject.FindObjectOfType<FruitPoolProperties>();
-            }
-
-            return _instance;
-        }
-    }
+    // private static FruitPoolProperties _instance;
+    // public static FruitPoolProperties Instance
+    // {
+    //     get
+    //     {
+    //         if(_instance == null)
+    //         {
+    //             _instance = GameObject.FindObjectOfType<FruitPoolProperties>();
+    //         }
+    //         return _instance;
+    //     }
+    // }
 
     void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        // DontDestroyOnLoad(gameObject);
         mainFruitSprites = new Sprite[]{
                                         Resources.Load<Sprite>("Apple_0"),
                                         Resources.Load<Sprite>("Bananas_0"),

@@ -11,16 +11,17 @@ public class UIEndgame : MonoBehaviour
     Text playerScoreText, totalTimeText, totalFruitText;
     FruitPoolProperties fruitPoolProperties;
     Button restartButton, mainMenuButton;
+    Button[] allButtons;
     public GameObject fruitInfo, fruitDeliveredBreakdown;
-    
-    void Start()
+ 
+    public void SetUp()
     {
         uIEndgameCanvas = GetComponentInChildren<Canvas>();
         fruitPoolProperties = FindObjectOfType<FruitPoolProperties>();
-        ToggleEndgameCanvas(false);
 
         SetUpTextRefs();
         SetUpButtonRefs();
+        ToggleButtonEnabled(true);
     }
 
     void SetUpTextRefs()
@@ -54,7 +55,7 @@ public class UIEndgame : MonoBehaviour
 
     void SetUpButtonRefs()
     {
-        Button[] allButtons = GetComponentsInChildren<Button>();
+        allButtons = GetComponentsInChildren<Button>();
         foreach(Button button in allButtons)
         {
             if(button.name == "RestartButton")
@@ -66,6 +67,7 @@ public class UIEndgame : MonoBehaviour
 
     public void ToggleEndgameCanvas(bool state)
     {
+        ToggleButtonEnabled(state);
         uIEndgameCanvas.enabled = state;
     }
 
@@ -119,5 +121,13 @@ public class UIEndgame : MonoBehaviour
         
         string tempString = totalDeliveredFruit + "";
         totalFruitText.text = tempString;
+    }
+
+    public void ToggleButtonEnabled(bool state)
+    {
+        foreach(Button button in allButtons)
+        {
+            button.interactable = state;
+        }
     }
 }

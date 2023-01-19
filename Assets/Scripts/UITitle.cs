@@ -7,14 +7,13 @@ public class UITitle : MonoBehaviour
 {
     Canvas titleScreenCanvas, instructionCanvas;
     Button playButton, instructionButton, titleReturnButton;
+    Button[] allButtons;
 
-    UIManager uIManager;
     bool onInstructionScreen = false;
 
-    void Start()
+    public void SetUp()
     {
-        uIManager = GetComponentInParent<UIManager>();
-        Button[] allButtons = GetComponentsInChildren<Button>();
+        allButtons = GetComponentsInChildren<Button>();
         foreach(Button button in allButtons)
         {
             switch(button.name)
@@ -47,28 +46,29 @@ public class UITitle : MonoBehaviour
             else
                 instructionCanvas = canvas;
         }
-        SwitchTitleInstructionScreens();
-
-        Debug.Log(uIManager.gameObject.name);
     }
 
     public void DisableTitleCanvases()
     {
-        Debug.Log("PlayGame Called");
         titleScreenCanvas.enabled = false;
-        Debug.Log("titleCanvas disabled");
         instructionCanvas.enabled = false;
-        Debug.Log("instructionCanvas disabled");
         onInstructionScreen = false;
-        Debug.Log("onInstructionScreen set to false");
     }
 
     public void SwitchTitleInstructionScreens()
     {
-        Debug.Log("SwitchTitleInstructionScreens called!");
+        // Debug.Log("SwitchTitleInstructionScreens called!");
         titleScreenCanvas.enabled = !onInstructionScreen;
         instructionCanvas.enabled = onInstructionScreen;
         onInstructionScreen = !onInstructionScreen;
 
+    }
+
+    public void ToggleButtonEnabled(bool state)
+    {
+        foreach(Button button in allButtons)
+        {
+            button.interactable = state;
+        }
     }
 }

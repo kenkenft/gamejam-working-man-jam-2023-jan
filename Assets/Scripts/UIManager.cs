@@ -7,16 +7,16 @@ public class UIManager : MonoBehaviour
     PlayerOverlay playerOverlay;
     UIEndgame uIEndgame;
     UITitle uITitle;
-    PlayerMain playerMain;
-    void Start()
+    
+    public void SetUpUIRefs()
     {
-        playerMain = FindObjectOfType<PlayerMain>();
-        playerMain.SetIsPlaying(false);
+        
         playerOverlay = GetComponentInChildren<PlayerOverlay>();
-        playerOverlay.TogglePlayerOverlayCanvas(false);
+        playerOverlay.SetUp();
         uIEndgame = GetComponentInChildren<UIEndgame>();
-        uIEndgame.ToggleEndgameCanvas(false);
+        uIEndgame.SetUp();
         uITitle = GetComponentInChildren<UITitle>();
+        uITitle.SetUp();
     }
 
     public void UpdateTruck(string truckTargetString, int fruitID)
@@ -25,33 +25,29 @@ public class UIManager : MonoBehaviour
         playerOverlay.UpdateCorrectTruck(truckTargetString, fruitID);
     }
 
-    public void TriggerEndgame(int totalTime)
+    public void TriggerEndgameUI()
     {
-        playerMain.SetIsPlaying(false);
+        // playerMain.SetIsPlaying(false);
         playerOverlay.TogglePlayerOverlayCanvas(false);
         uIEndgame.ToggleEndgameCanvas(true);
         uIEndgame.SetPlayerScoreText(playerOverlay.GetFinalScore());
-        uIEndgame.SetTotalTime(totalTime);
-        // uIEndgame.SetTotalFruitText(playerOverlay.GetTotalFruit());
+        uIEndgame.SetTotalTime(playerOverlay.GetTotalTime());
         uIEndgame.SetFruitText(playerOverlay.GetDeliveredFruit());
     }
 
-    public void SetUpGame()
+    public void SetUpGameUI()
     {
-        Debug.Log("SetUpGame called");
-        // playerMain.SetPlayerStartPos();
-        // Debug.Log("Player position set");
-        playerMain.SetIsPlaying(true);
-        Debug.Log("PlayerMain.IsPlaying set to True");
+        uITitle.DisableTitleCanvases();
+        uITitle.ToggleButtonEnabled(false);
         uIEndgame.ToggleEndgameCanvas(false);
         playerOverlay.TogglePlayerOverlayCanvas(true);
-        Debug.Log("PlayerOverlayCanvas enabled");
         playerOverlay.StartTimer(9);
-        uITitle.DisableTitleCanvases();
+        
     }
 
     public void ReturnToTitle()
     {
+        playerOverlay.TogglePlayerOverlayCanvas(false);
         uIEndgame.ToggleEndgameCanvas(false);
         uITitle.SwitchTitleInstructionScreens();
     }

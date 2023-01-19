@@ -13,7 +13,8 @@ public class PlayerOverlay : MonoBehaviour
     Canvas playerOverlayCanvas;
     int fillAmount = 100/5;
     List<int> deliveredFruitsList = new List<int>{};
-    void Start()
+
+    public void SetUp()
     {
         playerOverlayCanvas = GetComponentInChildren<Canvas>();
         fruitPoolProperties = FindObjectOfType<FruitPoolProperties>();
@@ -38,7 +39,6 @@ public class PlayerOverlay : MonoBehaviour
         }
     }
 
-
     public void UpdateCorrectTruck(string truckTargetString, int fruitID)
     {
         int truckID = GetCorrectTruckID(truckTargetString);
@@ -47,9 +47,7 @@ public class PlayerOverlay : MonoBehaviour
 
     int GetCorrectTruckID(string truckTargetString)
     {
-        
         // Debug.Log("truckTargetString: " + truckTargetString);
-        
         char targetTruck = ParseHarvestCharacter(truckTargetString);
         
         switch(targetTruck) // Would this be better as a dictionary?
@@ -78,7 +76,6 @@ public class PlayerOverlay : MonoBehaviour
             if(letter.Equals('a') || letter.Equals('s') || letter.Equals('d') || letter.Equals('f'))
                 parsedString = letter;
         }
-        
         return parsedString;
     }
 
@@ -141,5 +138,10 @@ public class PlayerOverlay : MonoBehaviour
     public void StartTimer(int startTime)
     {
         StartCoroutine(timer.Countdown(startTime));
+    }
+
+    public int GetTotalTime()
+    {
+        return timer.GetTotalTime();
     }
 }

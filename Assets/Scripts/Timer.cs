@@ -6,15 +6,14 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour
 {
     int timeLeft = 9, totalTime = 0;
-    UIManager uIManager;
     Text timerText;
+    GameManager gameManager;
     WaitForSecondsRealtime timerDelay = new WaitForSecondsRealtime(1.0f);
     void Start()
     {
         timerText = GetComponentInChildren<Text>();
-        uIManager = GetComponentInParent<UIManager>();
         timerText.text = "Time: " + timeLeft;
-        // StartCoroutine("Countdown");
+        gameManager = GetComponentInParent<GameManager>();
     }
 
     public IEnumerator Countdown(int startAmount)
@@ -28,12 +27,17 @@ public class Timer : MonoBehaviour
             timerText.text = "Time: " + timeLeft;
         }
         StopCoroutine("Countdown");
-        uIManager.TriggerEndgame(totalTime);
+        gameManager.TriggerEndgame();
         yield return null;
     }
 
     public void AddBonusTime(int bonusTime)
     {
         timeLeft += bonusTime;
+    }
+
+    public int GetTotalTime()
+    {
+        return totalTime;
     }
 }
