@@ -90,4 +90,9 @@ public class PlayerMove : MonoBehaviour
         return rig.velocity.x;
     }
 
+    public float GetPlayerVerticalVel()
+    {
+        return rig.velocity.y;
+    }
+
 }

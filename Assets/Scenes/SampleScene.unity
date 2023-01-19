@@ -5387,7 +5387,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 866973284}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1336234881}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: SetUpGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &866973284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6655,9 +6667,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1349396916}
-        m_TargetAssemblyTypeName: UITitle, Assembly-CSharp
-        m_MethodName: PlayGame
+      - m_Target: {fileID: 1336234881}
+        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+        m_MethodName: SetUpGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -20843,6 +20855,10 @@ PrefabInstance:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 6200000, guid: add25e6db2d8f0c46a1494e58580f43b, type: 2}
+    - target: {fileID: 7163763691353767558, guid: e6d80ae626112d64a86ff693156fa662, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7163763691353767559, guid: e6d80ae626112d64a86ff693156fa662, type: 3}
       propertyPath: m_RootOrder
       value: 1

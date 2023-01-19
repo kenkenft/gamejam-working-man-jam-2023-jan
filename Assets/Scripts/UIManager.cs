@@ -42,11 +42,11 @@ public class UIManager : MonoBehaviour
         // Debug.Log("Player position set");
         playerMain.SetIsPlaying(true);
         Debug.Log("PlayerMain.IsPlaying set to True");
+        uIEndgame.ToggleEndgameCanvas(false);
         playerOverlay.TogglePlayerOverlayCanvas(true);
         Debug.Log("PlayerOverlayCanvas enabled");
-        playerOverlay.StartTimer(100);
+        playerOverlay.StartTimer(9);
         uITitle.DisableTitleCanvases();
     }
-
 
 }

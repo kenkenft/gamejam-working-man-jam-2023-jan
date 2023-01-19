@@ -52,13 +52,6 @@ public class UITitle : MonoBehaviour
         Debug.Log(uIManager.gameObject.name);
     }
 
-    public void PlayGame()
-    {
-        // uIManager.SetUpGame();
-        
-        uIManager.SetUpGame();
-    }
-
     public void DisableTitleCanvases()
     {
         Debug.Log("PlayGame Called");
