@@ -9,7 +9,7 @@ public class CropProperties : MonoBehaviour
     Collider2D stalkCol;
     SpriteRenderer fruitSpriteRenderer;
     int harvestProgress = 80, currFruitID = -1;
-    float timeToGrow = 2.5f;
+    float timeToGrow = 1.5f;
     WaitForSecondsRealtime delay = new WaitForSecondsRealtime(1f);
     
     void Start()

@@ -38,6 +38,12 @@ public class FruitPoolProperties : MonoBehaviour
         
     }
 
+    public void SetUp()
+    {
+        SetUpUnaddedFruit();
+        AddToCropPool(2);
+    }
+
     public void SetUpUnaddedFruit()
     {
         mainFruitPool = new int[mainFruitSprites.Length];

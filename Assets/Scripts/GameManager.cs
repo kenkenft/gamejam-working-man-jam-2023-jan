@@ -18,7 +18,9 @@ public class GameManager : MonoBehaviour
         playerMain.SetIsPlaying(false);
         // playerMain.SetPlayerStartPos();
         fruitPoolProperties = GetComponentInChildren<FruitPoolProperties>();
+        fruitPoolProperties.SetUp();
         cropManager = GetComponentInChildren<CropManager>();
+        cropManager.SetUp();
         uIManager = GetComponentInChildren<UIManager>();
         uIManager.SetUpUIRefs();
         uIManager.ReturnToTitle();
@@ -29,6 +31,7 @@ public class GameManager : MonoBehaviour
         playerMain.SetIsPlaying(true);
         // playerMain.SetPlayerStartPos();
         uIManager.SetUpGameUI();
+        StartCoroutine(cropManager.AddFruitToPool(fruitPoolProperties.unaddedFruit.Count));
     }
 
     public void TriggerEndgame()
@@ -37,5 +40,8 @@ public class GameManager : MonoBehaviour
         uIManager.TriggerEndgameUI();
     }
 
-    
+    public void ResetCropAndFruitManagers()
+    {
+
+    }
 }

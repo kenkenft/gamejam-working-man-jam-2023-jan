@@ -9,24 +9,23 @@ public class CropManager : MonoBehaviour
     FruitPoolProperties fruitPoolProperties;
     CropProperties[] allCropsProperties; 
     WaitForSecondsRealtime addFruitDelay = new WaitForSecondsRealtime(10.0f);
-    void Start()
+    public void SetUp()
     {
         fruitPoolProperties = FindObjectOfType<FruitPoolProperties>();
-        fruitPoolProperties.SetUpUnaddedFruit();
-        fruitPoolProperties.AddToCropPool(2);
-        
-        // foreach(int fruit in fruitPoolProperties.cropFruitPool)
-        //     Debug.Log("FruitID: " + fruit + ". Fruit name: " + fruitPoolProperties.mainFruitSprites[fruit]);
-
         allCropsProperties = GetComponentsInChildren<CropProperties>();
+        SetUpCropProperties();
+
+        // StartCoroutine("AddFruitToPool",fruitPoolProperties.unaddedFruit.Count);
+    }
+
+    public void SetUpCropProperties()
+    {
         foreach(CropProperties crop in allCropsProperties)
         {
             crop.SetFruitPoolPropertiesRef(fruitPoolProperties);
             crop.SetUpSprites();
             crop.GrowRandomFruit();
         }
-
-        // StartCoroutine("AddFruitToPool",fruitPoolProperties.unaddedFruit.Count);
     }
 
     public IEnumerator AddFruitToPool(int unaddedFruitLeft)
