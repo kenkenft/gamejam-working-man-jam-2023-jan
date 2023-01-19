@@ -85,7 +85,9 @@ public class CropProperties : MonoBehaviour
     {
         // Debug.Log("RegrowCrop Coroutine started. Waiting.");
         // yield return new WaitForSecondsRealtime(cropGrowingTime);
+        
         yield return delay;
+
         // Debug.Log("Plant is growing");
         harvestProgress = 80;
         isHarvestable = true;

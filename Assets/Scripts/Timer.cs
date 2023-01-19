@@ -8,7 +8,7 @@ public class Timer : MonoBehaviour
     int timeLeft = 9, totalTime = 0;
     Text timerText;
     GameManager gameManager;
-    WaitForSecondsRealtime timerDelay = new WaitForSecondsRealtime(0f);
+    WaitForSecondsRealtime timerDelay = new WaitForSecondsRealtime(0.5f);
     void Start()
     {
         timerText = GetComponentInChildren<Text>();
@@ -24,11 +24,18 @@ public class Timer : MonoBehaviour
             yield return timerDelay;
             timeLeft--;
             totalTime++;
+            TimeToRandomizeFruit();
             timerText.text = "Time: " + timeLeft;
         }
         StopCoroutine("Countdown");
         gameManager.TriggerEndgame();
         yield return null;
+    }
+
+    void TimeToRandomizeFruit()
+    {
+        if(totalTime % 8 == 0)
+            gameManager.StartRandomiseFruit();
     }
 
     public void AddBonusTime(int bonusTime)

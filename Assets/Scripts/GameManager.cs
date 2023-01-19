@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
         fruitPoolProperties.SetUp();
         cropManager.SetUpCropProperties();
         StartCoroutine(fruitPoolProperties.AddFruitToPool());
-        uIManager.SetUpGameUI(6666);
+        uIManager.SetUpGameUI(60);
     }
 
     public void TriggerEndgame()
@@ -41,5 +41,10 @@ public class GameManager : MonoBehaviour
         StopAllCoroutines();
         playerMain.SetIsPlaying(false);
         uIManager.TriggerEndgameUI();
+    }
+
+    public void StartRandomiseFruit()
+    {
+        StartCoroutine(cropManager.RegrowRandomFruit());
     }
 }
