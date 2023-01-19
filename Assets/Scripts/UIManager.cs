@@ -50,6 +50,7 @@ public class UIManager : MonoBehaviour
         playerOverlay.TogglePlayerOverlayCanvas(false);
         uIEndgame.ToggleEndgameCanvas(false);
         uITitle.SwitchTitleInstructionScreens();
+        uITitle.ToggleButtonEnabled(true);
     }
 
 }

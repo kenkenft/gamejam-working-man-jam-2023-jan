@@ -6,7 +6,7 @@ public class PlayerMove : MonoBehaviour
 {
     Rigidbody2D rig;
     float playerSpeedBase = 8f, 
-          playerJumpForceBase = 8f,
+          playerJumpForceBase = 10f,
           speedDecayMultiplier = 0.95f,
           jumpVelDecayHigh = 1.4f, 
           jumpVelDecayLow = 1.9f;
@@ -15,7 +15,7 @@ public class PlayerMove : MonoBehaviour
     Ray2D[] rays;
     public LayerMask groundLayerMask;
     
-    void Start()
+    public void SetUp()
     {
         rig = GetComponent<Rigidbody2D>();
         groundLayerMask = LayerMask.GetMask("Ground");
@@ -48,11 +48,6 @@ public class PlayerMove : MonoBehaviour
             return true;
         }
         return false;
-
-        // RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 1f, groundLayerMask);
-        // if (hit.collider != null) 
-        //     return true;
-        // return false;
     }//// End of IsGrounded()
 
     public Ray2D[] CreateRays()

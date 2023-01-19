@@ -14,9 +14,10 @@ public class PlayerMain : MonoBehaviour
 
     public Animator animator;
 
-    void Start()
+    public void SetUp()
     {
         playerMove = GetComponent<PlayerMove>();
+        playerMove.SetUp();
         playerInteract = GetComponent<PlayerInteract>();
         uiManager = FindObjectOfType<UIManager>();
         playerSpriteRenderer = GetComponent<SpriteRenderer>();
@@ -61,11 +62,6 @@ public class PlayerMain : MonoBehaviour
             }
         }
     }
-
-    // public void OnLanding()
-    // {
-    //     animator.SetBool("IsJumping", false);
-    // }
 
     void FlipSprite()
     {

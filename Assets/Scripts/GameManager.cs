@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         playerMain = GetComponentInChildren<PlayerMain>();
+        playerMain.SetUp();
         playerMain.SetIsPlaying(false);
         // playerMain.SetPlayerStartPos();
         fruitPoolProperties = GetComponentInChildren<FruitPoolProperties>();
