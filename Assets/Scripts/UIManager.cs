@@ -7,9 +7,13 @@ public class UIManager : MonoBehaviour
     PlayerOverlay playerOverlay;
     UIEndgame uIEndgame;
     UITitle uITitle;
+    PlayerMain playerMain;
     void Start()
     {
+        playerMain = FindObjectOfType<PlayerMain>();
+        playerMain.SetIsPlaying(false);
         playerOverlay = GetComponentInChildren<PlayerOverlay>();
+        playerOverlay.TogglePlayerOverlayCanvas(false);
         uIEndgame = GetComponentInChildren<UIEndgame>();
         uIEndgame.ToggleEndgameCanvas(false);
         uITitle = GetComponentInChildren<UITitle>();
@@ -23,6 +27,7 @@ public class UIManager : MonoBehaviour
 
     public void TriggerEndgame(int totalTime)
     {
+        playerOverlay.TogglePlayerOverlayCanvas(false);
         uIEndgame.ToggleEndgameCanvas(true);
         uIEndgame.SetPlayerScoreText(playerOverlay.GetFinalScore());
         uIEndgame.SetTotalTime(totalTime);
@@ -32,7 +37,16 @@ public class UIManager : MonoBehaviour
 
     public void SetUpGame()
     {
-        Debug.Log("Game has started!");
+        Debug.Log("SetUpGame called");
+        // playerMain.SetPlayerStartPos();
+        // Debug.Log("Player position set");
+        playerMain.SetIsPlaying(true);
+        Debug.Log("PlayerMain.IsPlaying set to True");
+        playerOverlay.TogglePlayerOverlayCanvas(true);
+        Debug.Log("PlayerOverlayCanvas enabled");
+        playerOverlay.StartTimer(100);
+        uITitle.DisableTitleCanvases();
     }
+
 
 }

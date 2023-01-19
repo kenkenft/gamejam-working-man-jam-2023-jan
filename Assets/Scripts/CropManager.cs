@@ -19,7 +19,6 @@ public class CropManager : MonoBehaviour
         //     Debug.Log("FruitID: " + fruit + ". Fruit name: " + fruitPoolProperties.mainFruitSprites[fruit]);
 
         allCropsProperties = GetComponentsInChildren<CropProperties>();
-        //TODO For each cropPrefab, set the cropFruitPool, spritePool
         foreach(CropProperties crop in allCropsProperties)
         {
             crop.SetFruitPoolPropertiesRef(fruitPoolProperties);
@@ -27,10 +26,10 @@ public class CropManager : MonoBehaviour
             crop.GrowRandomFruit();
         }
 
-        StartCoroutine("AddFruitToPool",fruitPoolProperties.unaddedFruit.Count);
+        // StartCoroutine("AddFruitToPool",fruitPoolProperties.unaddedFruit.Count);
     }
 
-    IEnumerator AddFruitToPool(int unaddedFruitLeft)
+    public IEnumerator AddFruitToPool(int unaddedFruitLeft)
     {
         while(unaddedFruitLeft !=0)
         {

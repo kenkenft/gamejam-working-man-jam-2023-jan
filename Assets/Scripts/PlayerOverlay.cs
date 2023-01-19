@@ -10,10 +10,12 @@ public class PlayerOverlay : MonoBehaviour
     FruitPoolProperties fruitPoolProperties;
     ScoreTextProperties scoreTextProperties;
     Timer timer;
+    Canvas playerOverlayCanvas;
     int fillAmount = 100/5;
     List<int> deliveredFruitsList = new List<int>{};
     void Start()
     {
+        playerOverlayCanvas = GetComponentInChildren<Canvas>();
         fruitPoolProperties = FindObjectOfType<FruitPoolProperties>();
         for(int i = 0 ; i< trucks.Length; i++)
         {
@@ -24,14 +26,14 @@ public class PlayerOverlay : MonoBehaviour
         timer = GetComponentInChildren<Timer>();
         
         int checkListLength = deliveredFruitsList.Count-1;
-        Debug.Log("checkListLength: " + checkListLength);
+        // Debug.Log("checkListLength: " + checkListLength);
         for(int i = 0; i < fruitPoolProperties.cropFruitPool.Count; i++)
         {
-            Debug.Log("Is " + fruitPoolProperties.cropFruitPool[i] + " on the list?");
+            // Debug.Log("Is " + fruitPoolProperties.cropFruitPool[i] + " on the list?");
             if(i > checkListLength) //Add to list if new fruit type has been delivered
             {
                 deliveredFruitsList.Add(0);
-                Debug.Log("New fruit added to deliveredFruits list: " + i + " " + fruitPoolProperties.cropFruitPool[i]);
+                // Debug.Log("New fruit added to deliveredFruits list: " + i + " " + fruitPoolProperties.cropFruitPool[i]);
             }
         }
     }
@@ -46,7 +48,7 @@ public class PlayerOverlay : MonoBehaviour
     int GetCorrectTruckID(string truckTargetString)
     {
         
-        Debug.Log("truckTargetString: " + truckTargetString);
+        // Debug.Log("truckTargetString: " + truckTargetString);
         
         char targetTruck = ParseHarvestCharacter(truckTargetString);
         
@@ -96,16 +98,16 @@ public class PlayerOverlay : MonoBehaviour
     void UpdateTotalDeliveredFruits(int truckID)
     {
         int checkListLength = deliveredFruitsList.Count-1;
-        Debug.Log("checkListLength: " + checkListLength);
+        // Debug.Log("checkListLength: " + checkListLength);
         trucksProperties[truckID].ExpandFruitBonusTrackerList();
-        Debug.Log("fruitPoolProperties.cropFruitPool count:" + (fruitPoolProperties.cropFruitPool.Count-1));
+        // Debug.Log("fruitPoolProperties.cropFruitPool count:" + (fruitPoolProperties.cropFruitPool.Count-1));
         for(int i = 0; i < fruitPoolProperties.cropFruitPool.Count; i++)
         {
-            Debug.Log("Is " + fruitPoolProperties.cropFruitPool[i] + " on the checklist?");
+            // Debug.Log("Is " + fruitPoolProperties.cropFruitPool[i] + " on the checklist?");
             if(i > checkListLength) //Add to list if new fruit type has been delivered
             {
                 deliveredFruitsList.Add(0);
-                Debug.Log("New fruit added to totalDeliveredFruits list: " + i + " " + fruitPoolProperties.cropFruitPool[i]);
+                // Debug.Log("New fruit added to totalDeliveredFruits list: " + i + " " + fruitPoolProperties.cropFruitPool[i]);
             }
             deliveredFruitsList[i] += trucksProperties[truckID].GetFruitBonusTracker(i);
         }
@@ -129,5 +131,15 @@ public class PlayerOverlay : MonoBehaviour
     public List<int> GetDeliveredFruit()
     {
         return deliveredFruitsList;
+    }
+
+    public void TogglePlayerOverlayCanvas(bool state)
+    {
+        playerOverlayCanvas.enabled = state;
+    }
+
+    public void StartTimer(int startTime)
+    {
+        StartCoroutine(timer.Countdown(startTime));
     }
 }

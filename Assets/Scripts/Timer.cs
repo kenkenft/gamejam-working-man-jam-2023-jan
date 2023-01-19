@@ -5,20 +5,21 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    int timeLeft = 100, totalTime = 0;
+    int timeLeft = 9, totalTime = 0;
     UIManager uIManager;
     Text timerText;
-    WaitForSecondsRealtime timerDelay = new WaitForSecondsRealtime(1.0f);
+    WaitForSecondsRealtime timerDelay = new WaitForSecondsRealtime(0f);
     void Start()
     {
         timerText = GetComponentInChildren<Text>();
         uIManager = GetComponentInParent<UIManager>();
         timerText.text = "Time: " + timeLeft;
-        StartCoroutine("Countdown");
+        // StartCoroutine("Countdown");
     }
 
-    IEnumerator Countdown()
+    public IEnumerator Countdown(int startAmount)
     {
+        timeLeft = startAmount;
         while(timeLeft > 0)
         {
             yield return timerDelay;

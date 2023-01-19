@@ -48,14 +48,26 @@ public class UITitle : MonoBehaviour
                 instructionCanvas = canvas;
         }
         SwitchTitleInstructionScreens();
+
+        Debug.Log(uIManager.gameObject.name);
     }
 
     public void PlayGame()
     {
-        titleScreenCanvas.enabled = false;
-        instructionCanvas.enabled = false;
-        onInstructionScreen = false;
         // uIManager.SetUpGame();
+        
+        uIManager.SetUpGame();
+    }
+
+    public void DisableTitleCanvases()
+    {
+        Debug.Log("PlayGame Called");
+        titleScreenCanvas.enabled = false;
+        Debug.Log("titleCanvas disabled");
+        instructionCanvas.enabled = false;
+        Debug.Log("instructionCanvas disabled");
+        onInstructionScreen = false;
+        Debug.Log("onInstructionScreen set to false");
     }
 
     public void SwitchTitleInstructionScreens()
