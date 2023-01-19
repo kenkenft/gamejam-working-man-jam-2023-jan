@@ -27,6 +27,7 @@ public class UIManager : MonoBehaviour
 
     public void TriggerEndgame(int totalTime)
     {
+        playerMain.SetIsPlaying(false);
         playerOverlay.TogglePlayerOverlayCanvas(false);
         uIEndgame.ToggleEndgameCanvas(true);
         uIEndgame.SetPlayerScoreText(playerOverlay.GetFinalScore());
@@ -47,6 +48,12 @@ public class UIManager : MonoBehaviour
         Debug.Log("PlayerOverlayCanvas enabled");
         playerOverlay.StartTimer(9);
         uITitle.DisableTitleCanvases();
+    }
+
+    public void ReturnToTitle()
+    {
+        uIEndgame.ToggleEndgameCanvas(false);
+        uITitle.SwitchTitleInstructionScreens();
     }
 
 }
