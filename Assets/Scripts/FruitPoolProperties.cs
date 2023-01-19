@@ -8,7 +8,8 @@ public class FruitPoolProperties : MonoBehaviour
     public Sprite[] mainFruitSprites;
     public int[] mainFruitPool;
     public List<int> cropFruitPool = new List<int>{}, unaddedFruit = new List<int>{};
-
+    int fruitLeft = 0;
+    WaitForSecondsRealtime addFruitDelay = new WaitForSecondsRealtime(10.0f);
     // private static FruitPoolProperties _instance;
     // public static FruitPoolProperties Instance
     // {
@@ -40,11 +41,19 @@ public class FruitPoolProperties : MonoBehaviour
 
     public void SetUp()
     {
+        ResetLists();
         SetUpUnaddedFruit();
         AddToCropPool(2);
     }
 
-    public void SetUpUnaddedFruit()
+    void ResetLists()
+    {
+        cropFruitPool.Clear();
+        unaddedFruit.Clear();
+    }
+
+    // public void SetUpUnaddedFruit()
+    void SetUpUnaddedFruit()
     {
         mainFruitPool = new int[mainFruitSprites.Length];
         for(int i = 0; i < mainFruitSprites.Length; i++)
@@ -54,7 +63,21 @@ public class FruitPoolProperties : MonoBehaviour
         }
     }
 
-    public void AddToCropPool(int amountToAdd)
+    public IEnumerator AddFruitToPool()
+    {
+        while(fruitLeft !=0)
+        {
+            yield return addFruitDelay;
+            AddToCropPool(1);
+            fruitLeft--;
+            // Debug.Log("Coroutine AddFruitToPool: Fruit Added to pool! Fruit unadded: "+ unaddedFruitLeft);
+        }
+        StopCoroutine("AddFruitToPool");
+        yield return null;
+    }
+
+    // public void AddToCropPool(int amountToAdd)
+    void AddToCropPool(int amountToAdd)
     {
         int randomIndex;
         for(int i = 0; i < amountToAdd; i++)

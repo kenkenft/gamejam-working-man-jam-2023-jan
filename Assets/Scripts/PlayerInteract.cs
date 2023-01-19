@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerInteract : MonoBehaviour
 {
     public bool isHarvesting = false;
-    public float harvestCooldown = 0.5f, lastSuccessfulPressTime = 0f, currButtonPressTime = 0f;
+    public float harvestCooldown = 0.2f, lastSuccessfulPressTime = 0f, currButtonPressTime = 0f;
     public int harvestPower = 20, harvestProgress = 0; 
 
     CropProperties targetCrop;

@@ -18,10 +18,12 @@ public class PlayerOverlay : MonoBehaviour
     {
         playerOverlayCanvas = GetComponentInChildren<Canvas>();
         fruitPoolProperties = FindObjectOfType<FruitPoolProperties>();
+        
         for(int i = 0 ; i< trucks.Length; i++)
         {
             trucksProperties[i] = trucks[i].GetComponentInChildren<TruckProperties>();
             trucksProperties[i].SetFruitPoolPropertiesRef(fruitPoolProperties);
+            trucksProperties[i].SetUp();
         }
         scoreTextProperties = GetComponentInChildren<ScoreTextProperties>();
         timer = GetComponentInChildren<Timer>();
@@ -37,6 +39,17 @@ public class PlayerOverlay : MonoBehaviour
                 // Debug.Log("New fruit added to deliveredFruits list: " + i + " " + fruitPoolProperties.cropFruitPool[i]);
             }
         }
+    }
+
+    public void ResetOverlay()
+    {
+        deliveredFruitsList.Clear();
+        for(int i = 0 ; i< trucks.Length; i++)
+        {
+            trucksProperties[i].ClearList();
+            trucksProperties[i].ResetTruckProperties();
+        }
+        scoreTextProperties.UpdateScore(0);
     }
 
     public void UpdateCorrectTruck(string truckTargetString, int fruitID)

@@ -40,8 +40,10 @@ public class UIManager : MonoBehaviour
         uITitle.DisableTitleCanvases();
         uITitle.ToggleButtonEnabled(false);
         uIEndgame.ToggleEndgameCanvas(false);
+        uIEndgame.SetPlayerScoreText(0);
         playerOverlay.TogglePlayerOverlayCanvas(true);
-        playerOverlay.StartTimer(9);
+        playerOverlay.ResetOverlay();
+        playerOverlay.StartTimer(15);
         
     }
 

@@ -30,18 +30,16 @@ public class GameManager : MonoBehaviour
     {
         playerMain.SetIsPlaying(true);
         // playerMain.SetPlayerStartPos();
+        fruitPoolProperties.SetUp();
+        cropManager.SetUpCropProperties();
         uIManager.SetUpGameUI();
-        StartCoroutine(cropManager.AddFruitToPool(fruitPoolProperties.unaddedFruit.Count));
+        StartCoroutine(fruitPoolProperties.AddFruitToPool());
     }
 
     public void TriggerEndgame()
     {
+        StopAllCoroutines();
         playerMain.SetIsPlaying(false);
         uIManager.TriggerEndgameUI();
-    }
-
-    public void ResetCropAndFruitManagers()
-    {
-
     }
 }

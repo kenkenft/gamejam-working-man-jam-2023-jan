@@ -13,18 +13,24 @@ public class TruckProperties : MonoBehaviour
     //     fruitBonusTracker = new int[0];
     public List<int> fruitBonusTracker = new List<int>{};
     Text truckProgressText;
-    void Start()
+    public void SetUp()
     {
         truckProgressText = GetComponentInChildren<Text>();
+    }
+
+    public void ClearList()
+    {
+        fruitBonusTracker.Clear();
     }
 
     public void UpdateTruckFullness(int amount)
     {
         truckFullness += amount;
-        UpdateProgressText();
+        truckFullness = Mathf.Clamp(truckFullness,0, 100);
+        UpdateProgressElement();
     }
 
-    void UpdateProgressText()
+    void UpdateProgressElement()
     {
         truckProgressText.text = truckFullness + "%";
     }
@@ -37,11 +43,7 @@ public class TruckProperties : MonoBehaviour
 
     public void IncrementBonusTracker(int fruitID)
     {
-        // if(fruitBonusTracker.Length == 0)
-        // {
-        //     fruitBonusTracker = new int[fruitPoolProperties.cropFruitPool.Count];
-        //     ResetBonusTracker();
-        // }
+        
         for(int i = 0; i < fruitPoolProperties.cropFruitPool.Count; i++)
         {
             if(fruitPoolProperties.cropFruitPool[i] == fruitID)
@@ -95,7 +97,6 @@ public class TruckProperties : MonoBehaviour
 
     void ResetBonusTracker()
     {
-        // for(int i = 0; i < fruitBonusTracker.Length; i++)
         for(int i = 0; i < fruitBonusTracker.Count; i++)
             fruitBonusTracker[i] = 0;
     }
