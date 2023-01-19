@@ -38,7 +38,7 @@ public class PlayerMove : MonoBehaviour
         rig.velocity = mask;
     }
     
-    bool IsGrounded()
+    public bool IsGrounded()
     {
         Ray2D[] jumpRays = CreateRays();
         foreach(Ray2D ray in jumpRays)
@@ -84,4 +84,10 @@ public class PlayerMove : MonoBehaviour
             rig.velocity += Vector2.up * Physics2D.gravity.y * jumpVelDecayLow  * Time.deltaTime;                // Start increasing downward velocity once player lets go of jump input
         
     }//// End of VelocityDecay()
+
+    public float GetPlayerHorizontalVel()
+    {
+        return rig.velocity.x;
+    }
+
 }

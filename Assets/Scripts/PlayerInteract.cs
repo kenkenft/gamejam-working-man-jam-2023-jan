@@ -12,14 +12,17 @@ public class PlayerInteract : MonoBehaviour
 
     public bool Harvest()
     {
-        currButtonPressTime = Time.time;
-        if((currButtonPressTime - lastSuccessfulPressTime > harvestCooldown) 
-            && targetCrop.CheckHarvestable())
+        if(targetCrop != null)
         {
-            lastSuccessfulPressTime = currButtonPressTime;
-            harvestProgress = targetCrop.HarvestFruit(harvestPower);
-            if(harvestProgress >= 100)
-                return true;
+            currButtonPressTime = Time.time;
+            if((currButtonPressTime - lastSuccessfulPressTime > harvestCooldown) 
+                && targetCrop.CheckHarvestable())
+            {
+                lastSuccessfulPressTime = currButtonPressTime;
+                harvestProgress = targetCrop.HarvestFruit(harvestPower);
+                if(harvestProgress >= 100)
+                    return true;
+            }
         }
         // else
         //     Debug.Log("Can't use harvest action yet!");

@@ -4,28 +4,44 @@ using UnityEngine;
 
 public class PlayerMain : MonoBehaviour
 {
-    bool isHarvested = false;
+    bool isHarvested = false,isPaused = false, isPlaying = false, isFacingRight = true;
     PlayerMove playerMove;
     UIManager uiManager;
     PlayerInteract playerInteract;
     Vector3 playerStartPos = new Vector3(1f, -4.5f, 1f);
-    bool isPaused = false, isPlaying = false;
+    SpriteRenderer playerSpriteRenderer;
+    float horizontalSpeed = 0f;
+
+    public Animator animator;
 
     void Start()
     {
         playerMove = GetComponent<PlayerMove>();
         playerInteract = GetComponent<PlayerInteract>();
         uiManager = FindObjectOfType<UIManager>();
+        playerSpriteRenderer = GetComponent<SpriteRenderer>();
     }
     void Update()
     {
         if(!isPaused && isPlaying)
         {
             if(Input.GetKey("space"))
-            playerMove.Jump();
+            {    
+                playerMove.Jump();
+                animator.SetBool("IsJumping", true);
+            }
 
-            if(Input.GetAxis("Horizontal") !=0 )
-                playerMove.Move(Input.GetAxis("Horizontal"));
+            horizontalSpeed = Input.GetAxis("Horizontal");
+            if(horizontalSpeed !=0 )
+            {    
+                playerMove.Move(horizontalSpeed);
+                animator.SetFloat("Speed", Mathf.Abs(horizontalSpeed));
+                if(horizontalSpeed > 0f && !isFacingRight)
+                    FlipSprite(); 
+                else if(horizontalSpeed < 0f && isFacingRight) 
+                    FlipSprite();
+                
+            }
             
             playerMove.VelocityDecay();
 
@@ -46,6 +62,19 @@ public class PlayerMain : MonoBehaviour
         }
     }
 
+    // public void OnLanding()
+    // {
+    //     animator.SetBool("IsJumping", false);
+    // }
+
+    void FlipSprite()
+    {
+        isFacingRight = !isFacingRight;
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
+    }
+
     public void SetPlayerStartPos()
     {
         gameObject.transform.position = playerStartPos;
@@ -54,5 +83,12 @@ public class PlayerMain : MonoBehaviour
     public void SetIsPlaying(bool state)
     {
         isPlaying = state;
+    }
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if(col.contacts[0].normal == Vector2.up)
+        {
+            animator.SetBool("IsJumping", false);
+        }
     }
 }

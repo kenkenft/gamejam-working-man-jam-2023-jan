@@ -8,7 +8,7 @@ public class Timer : MonoBehaviour
     int timeLeft = 9, totalTime = 0;
     UIManager uIManager;
     Text timerText;
-    WaitForSecondsRealtime timerDelay = new WaitForSecondsRealtime(0f);
+    WaitForSecondsRealtime timerDelay = new WaitForSecondsRealtime(1.0f);
     void Start()
     {
         timerText = GetComponentInChildren<Text>();
