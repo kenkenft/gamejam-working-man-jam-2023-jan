@@ -13,12 +13,13 @@ public class UIEndgame : MonoBehaviour
     Button restartButton, mainMenuButton;
     Button[] allButtons;
     public GameObject fruitInfo, fruitDeliveredBreakdown;
+    List<GameObject> fruitInfoList = new List<GameObject>{};
  
     public void SetUp()
     {
         uIEndgameCanvas = GetComponentInChildren<Canvas>();
         fruitPoolProperties = FindObjectOfType<FruitPoolProperties>();
-
+        
         SetUpTextRefs();
         SetUpButtonRefs();
         ToggleButtonEnabled(true);
@@ -109,14 +110,36 @@ public class UIEndgame : MonoBehaviour
 
     public void SetFruitText(List<int> deliveredFruits)
     {
-        int totalDeliveredFruit = 0, amountFruitTypes = deliveredFruits.Count;
+        int totalDeliveredFruit = 0, amountFruitTypes = deliveredFruits.Count, 
+        amountOfFruitInfo = fruitDeliveredBreakdown.gameObject.GetComponentsInChildren<Transform>().Length;
+        // Debug.Log(fruitDeliveredBreakdown.GetType());
 
-        for(int i = 0; i < deliveredFruits.Count; i++)
+        if(amountOfFruitInfo < amountFruitTypes)
         {    
-            totalDeliveredFruit += deliveredFruits[i];
-            GameObject fruitInfoInstance = Instantiate(fruitInfo, fruitInfo.transform.position, fruitInfo.transform.rotation, fruitDeliveredBreakdown.transform);
-            fruitInfoInstance.GetComponentInChildren<Image>().sprite = fruitPoolProperties.mainFruitSprites[fruitPoolProperties.cropFruitPool[i]];
-            fruitInfoInstance.GetComponentInChildren<Text>().text = "x" + deliveredFruits[i];
+            int diff = amountFruitTypes - amountOfFruitInfo;
+            for(int i = 0; i <= diff; i++)
+                {
+                    GameObject fruitInfoInstance = Instantiate(fruitInfo, fruitInfo.transform.position, fruitInfo.transform.rotation, fruitDeliveredBreakdown.transform);
+                    fruitInfoList.Add(fruitInfoInstance);
+                }
+        
+        }
+
+        // for(int i = 0; i < amountFruitTypes; i++)
+        for(int i = 0; i < fruitInfoList.Count; i++)
+        {    
+            if(i < amountFruitTypes)
+            {
+                totalDeliveredFruit += deliveredFruits[i];
+                fruitInfoList[i].SetActive(true);
+                fruitInfoList[i].GetComponentInChildren<Image>().sprite = fruitPoolProperties.mainFruitSprites[fruitPoolProperties.cropFruitPool[i]];
+                fruitInfoList[i].GetComponentInChildren<Text>().text = "x" + deliveredFruits[i];
+            }
+            else
+                fruitInfoList[i].SetActive(false);
+            // GameObject fruitInfoInstance = Instantiate(fruitInfo, fruitInfo.transform.position, fruitInfo.transform.rotation, fruitDeliveredBreakdown.transform);
+            // fruitInfoInstance.GetComponentInChildren<Image>().sprite = fruitPoolProperties.mainFruitSprites[fruitPoolProperties.cropFruitPool[i]];
+            // fruitInfoInstance.GetComponentInChildren<Text>().text = "x" + deliveredFruits[i];
         }
         
         string tempString = totalDeliveredFruit + "";
