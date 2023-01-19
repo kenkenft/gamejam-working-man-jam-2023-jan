@@ -11,6 +11,7 @@ public class PlayerMain : MonoBehaviour
     Vector3 playerStartPos = new Vector3(1f, -4.5f, 1f);
     SpriteRenderer playerSpriteRenderer;
     float horizontalSpeed = 0f;
+    public GameObject playerSpawn;
 
     public Animator animator;
 
@@ -73,7 +74,8 @@ public class PlayerMain : MonoBehaviour
 
     public void SetPlayerStartPos()
     {
-        gameObject.transform.position = playerStartPos;
+        // gameObject.transform.position = playerStartPos;
+        gameObject.transform.position = playerSpawn.transform.position;
     }
 
     public void SetIsPlaying(bool state)

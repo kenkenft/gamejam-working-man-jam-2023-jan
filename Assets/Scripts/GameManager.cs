@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     public void SetUpGame()
     {
         playerMain.SetIsPlaying(true);
-        // playerMain.SetPlayerStartPos();
+        playerMain.SetPlayerStartPos();
         fruitPoolProperties.SetUp();
         cropManager.SetUpCropProperties();
         uIManager.SetUpGameUI();

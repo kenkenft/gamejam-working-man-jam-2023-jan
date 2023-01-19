@@ -137,9 +137,6 @@ public class UIEndgame : MonoBehaviour
             }
             else
                 fruitInfoList[i].SetActive(false);
-            // GameObject fruitInfoInstance = Instantiate(fruitInfo, fruitInfo.transform.position, fruitInfo.transform.rotation, fruitDeliveredBreakdown.transform);
-            // fruitInfoInstance.GetComponentInChildren<Image>().sprite = fruitPoolProperties.mainFruitSprites[fruitPoolProperties.cropFruitPool[i]];
-            // fruitInfoInstance.GetComponentInChildren<Text>().text = "x" + deliveredFruits[i];
         }
         
         string tempString = totalDeliveredFruit + "";
