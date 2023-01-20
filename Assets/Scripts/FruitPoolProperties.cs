@@ -39,16 +39,6 @@ public class FruitPoolProperties : MonoBehaviour
                                         Resources.Load<Sprite>("Strawberry_0")
                                         };
 
-        // mainFruitImages = new Image[]{
-        //                                 Resources.Load<Image>("Apple_0"),
-        //                                 Resources.Load<Image>("Bananas_0"),
-        //                                 Resources.Load<Image>("Cherries_0"),
-        //                                 Resources.Load<Image>("Kiwi_0"),
-        //                                 Resources.Load<Image>("Melon_0"),
-        //                                 Resources.Load<Image>("Orange_0"),
-        //                                 Resources.Load<Image>("Pineapple_0"),
-        //                                 Resources.Load<Image>("Strawberry_0")
-        //                                 };
         
     }
 

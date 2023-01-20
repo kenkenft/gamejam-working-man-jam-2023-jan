@@ -1293,7 +1293,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "Objectives\n- Harvest as many fruits as possible before the timer runs
     out.\n- Points are earned for per full basket of fruit. \n  - A full basket contains
-    5 pieces of fruit.\n\nControls\n- Left and Right movement: Left and Right arrows\n-
+    6 pieces of fruit.\n\nControls\n- Left and Right movement: Left and Right arrows\n-
     Jump: Space\n- Harvest fruit: A, S, D, F"
 --- !u!222 &88296517
 CanvasRenderer:
@@ -5853,6 +5853,7 @@ GameObject:
   m_Component:
   - component: {fileID: 783063904}
   - component: {fileID: 783063905}
+  - component: {fileID: 783063906}
   m_Layer: 0
   m_Name: Game
   m_TagString: Untagged
@@ -5893,6 +5894,44 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 057ae1916749acc478d32fb30f72930b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &783063906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 783063903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c1f28524311ff948b432f6332eb35f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Jump
+    clip: {fileID: 8300000, guid: 0994c12e202f342459a4212e7287f7e8, type: 3}
+    source: {fileID: 0}
+    volume: 0.5
+    pitch: 0
+  - name: Endgame
+    clip: {fileID: 8300000, guid: 7478151cf36724a7dada558f746c3633, type: 3}
+    source: {fileID: 0}
+    volume: 0.5
+    pitch: 0
+  - name: ButtonClick
+    clip: {fileID: 8300000, guid: 32d4b1811dda14a6cb9e059ee8ad17d2, type: 3}
+    source: {fileID: 0}
+    volume: 0.5
+    pitch: 0
+  - name: Harvest
+    clip: {fileID: 8300000, guid: 6e8772b49f34d402a90016ed445d8a2f, type: 3}
+    source: {fileID: 0}
+    volume: 0.5
+    pitch: 0
+  - name: Delivered
+    clip: {fileID: 8300000, guid: 52320e590bf774734a288886eba557ba, type: 3}
+    source: {fileID: 0}
+    volume: 0.5
+    pitch: 0
 --- !u!1 &789072386
 GameObject:
   m_ObjectHideFlags: 0
@@ -7653,6 +7692,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1241324766}
   m_CullTransparentMesh: 1
+--- !u!1 &1246339553
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1246339554}
+  m_Layer: 0
+  m_Name: Boundaries
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1246339554
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246339553}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2077099030}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1251266987
 GameObject:
   m_ObjectHideFlags: 0
@@ -22630,6 +22700,7 @@ Transform:
   - {fileID: 1765084505}
   - {fileID: 576920232}
   - {fileID: 1591713649}
+  - {fileID: 1246339554}
   m_Father: {fileID: 783063904}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
