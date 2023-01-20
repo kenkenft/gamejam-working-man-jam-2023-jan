@@ -115,6 +115,16 @@ public class TruckProperties : MonoBehaviour
         // }
     }
 
+    public bool CalcBonusTime()
+    {
+        foreach(int tracker in fruitBonusTracker)
+        {
+            if(tracker == fullnessLimit)
+                return true;
+        }
+        return false;
+    }
+
     public void ShowHarvestedFruit(int fruitID)
     {
         spritePositions[truckFullness].enabled = true;
@@ -146,7 +156,7 @@ public class TruckProperties : MonoBehaviour
             // Debug.Log("deliveryBonusMultiplier value: " + deliveryBonusMultiplier[tracker]);
             deliveryBonusScore += (100 * tracker * deliveryBonusMultiplier[tracker] / 100);
         }
-        Debug.Log(deliveryBonusScore);
+        // Debug.Log(deliveryBonusScore);
         return deliveryBonusScore;
     }
 

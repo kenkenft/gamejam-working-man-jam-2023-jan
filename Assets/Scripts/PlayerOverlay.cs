@@ -12,6 +12,7 @@ public class PlayerOverlay : MonoBehaviour
     Timer timer;
     Canvas playerOverlayCanvas;
     int fillAmount = 1;
+    bool isAdding = false;
     List<int> deliveredFruitsList = new List<int>{};
     AudioManager audioManager;  
 
@@ -107,6 +108,8 @@ public class PlayerOverlay : MonoBehaviour
         {
             scoreTextProperties.UpdateScore(trucksProperties[truckID].CalcTruckScore());
             UpdateTotalDeliveredFruits(truckID);
+            isAdding = trucksProperties[truckID].CalcBonusTime();
+            timer.AddBonusTime(isAdding, 10);
             trucksProperties[truckID].ResetTruckProperties();
             audioManager.Play("Delivered");
         }

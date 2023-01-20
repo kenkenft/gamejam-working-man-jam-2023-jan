@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CropManager : MonoBehaviour
 {
-    int varIndex = 0, randomIndex=0;
+    int randomIndex=0; //varIndex = 0,
     int[] mainFruitPool;
     public GameObject cropPrefab;
     FruitPoolProperties fruitPoolProperties;
