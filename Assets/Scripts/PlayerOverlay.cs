@@ -11,7 +11,7 @@ public class PlayerOverlay : MonoBehaviour
     ScoreTextProperties scoreTextProperties;
     Timer timer;
     Canvas playerOverlayCanvas;
-    int fillAmount = 100/5;
+    int fillAmount = 1;
     List<int> deliveredFruitsList = new List<int>{};
 
     public void SetUp()
@@ -96,6 +96,7 @@ public class PlayerOverlay : MonoBehaviour
 
     void LoadAndCheckTruck(int truckID, int fruitID)
     {
+        trucksProperties[truckID].ShowHarvestedFruit(fruitID);
         trucksProperties[truckID].UpdateTruckFullness(fillAmount);
         trucksProperties[truckID].IncrementBonusTracker(fruitID);
         if(trucksProperties[truckID].IsTruckFull())

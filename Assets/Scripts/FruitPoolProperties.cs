@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FruitPoolProperties : MonoBehaviour
 {
     
     public Sprite[] mainFruitSprites;
+    public Image[] mainFruitImages;
     public int[] mainFruitPool;
     public List<int> cropFruitPool = new List<int>{}, unaddedFruit = new List<int>{};
     int fruitLeft = 0;
@@ -36,6 +38,17 @@ public class FruitPoolProperties : MonoBehaviour
                                         Resources.Load<Sprite>("Pineapple_0"),
                                         Resources.Load<Sprite>("Strawberry_0")
                                         };
+
+        // mainFruitImages = new Image[]{
+        //                                 Resources.Load<Image>("Apple_0"),
+        //                                 Resources.Load<Image>("Bananas_0"),
+        //                                 Resources.Load<Image>("Cherries_0"),
+        //                                 Resources.Load<Image>("Kiwi_0"),
+        //                                 Resources.Load<Image>("Melon_0"),
+        //                                 Resources.Load<Image>("Orange_0"),
+        //                                 Resources.Load<Image>("Pineapple_0"),
+        //                                 Resources.Load<Image>("Strawberry_0")
+        //                                 };
         
     }
 
