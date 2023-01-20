@@ -14,6 +14,7 @@ public class PlayerMain : MonoBehaviour
     public GameObject playerSpawn;
 
     public Animator animator;
+    AudioManager audioManager;
 
     public void SetUp()
     {
@@ -22,6 +23,7 @@ public class PlayerMain : MonoBehaviour
         playerInteract = GetComponent<PlayerInteract>();
         uiManager = FindObjectOfType<UIManager>();
         playerSpriteRenderer = GetComponent<SpriteRenderer>();
+        audioManager = GetComponentInParent<AudioManager>();
     }
     void Update()
     {
@@ -32,6 +34,7 @@ public class PlayerMain : MonoBehaviour
                 playerMove.Jump();
                 if(playerMove.GetPlayerVerticalVel() > 0f)
                     animator.SetBool("IsJumping", true);
+                audioManager.Play("Jump");
             }
 
             horizontalSpeed = Input.GetAxis("Horizontal");
@@ -55,6 +58,7 @@ public class PlayerMain : MonoBehaviour
             && playerInteract.isHarvesting)
             {
                 isHarvested = playerInteract.Harvest();
+                audioManager.Play("Harvest");
                 if(isHarvested)
                 {
                     // Debug.Log("Crop harvested! Sending to Truck: " + Input.inputString);

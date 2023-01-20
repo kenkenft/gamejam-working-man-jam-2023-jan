@@ -13,6 +13,8 @@ public class PlayerOverlay : MonoBehaviour
     Canvas playerOverlayCanvas;
     int fillAmount = 1;
     List<int> deliveredFruitsList = new List<int>{};
+    AudioManager audioManager;  
+
 
     public void SetUp()
     {
@@ -39,6 +41,8 @@ public class PlayerOverlay : MonoBehaviour
                 // Debug.Log("New fruit added to deliveredFruits list: " + i + " " + fruitPoolProperties.cropFruitPool[i]);
             }
         }
+        audioManager = GetComponentInParent<AudioManager>();
+
     }
 
     public void ResetOverlay()
@@ -104,6 +108,7 @@ public class PlayerOverlay : MonoBehaviour
             scoreTextProperties.UpdateScore(trucksProperties[truckID].CalcTruckScore());
             UpdateTotalDeliveredFruits(truckID);
             trucksProperties[truckID].ResetTruckProperties();
+            audioManager.Play("Delivered");
         }
     }
 

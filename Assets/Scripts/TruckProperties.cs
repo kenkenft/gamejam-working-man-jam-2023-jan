@@ -83,7 +83,7 @@ public class TruckProperties : MonoBehaviour
     {
         truckFullness += amount;
         truckFullness = Mathf.Clamp(truckFullness,0, fullnessLimit);
-        UpdateProgressElement();
+        // UpdateProgressElement();
     }
 
     void UpdateProgressElement()

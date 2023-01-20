@@ -7,6 +7,9 @@ public class UIManager : MonoBehaviour
     PlayerOverlay playerOverlay;
     UIEndgame uIEndgame;
     UITitle uITitle;
+    AudioManager audioManager;  
+
+
     
     public void SetUpUIRefs()
     {
@@ -17,6 +20,8 @@ public class UIManager : MonoBehaviour
         uIEndgame.SetUp();
         uITitle = GetComponentInChildren<UITitle>();
         uITitle.SetUp();
+        audioManager = GetComponentInParent<AudioManager>();
+
     }
 
     public void UpdateTruck(string truckTargetString, int fruitID)
@@ -33,6 +38,7 @@ public class UIManager : MonoBehaviour
         uIEndgame.SetPlayerScoreText(playerOverlay.GetFinalScore());
         uIEndgame.SetTotalTime(playerOverlay.GetTotalTime());
         uIEndgame.SetFruitText(playerOverlay.GetDeliveredFruit());
+        audioManager.Play("Endgame");
     }
 
     public void SetUpGameUI(int startTime)
@@ -44,7 +50,8 @@ public class UIManager : MonoBehaviour
         playerOverlay.TogglePlayerOverlayCanvas(true);
         playerOverlay.ResetOverlay();
         playerOverlay.StartTimer(startTime);
-        
+        audioManager.Play("ButtonClick");
+
     }
 
     public void ReturnToTitle()
@@ -53,6 +60,13 @@ public class UIManager : MonoBehaviour
         uIEndgame.ToggleEndgameCanvas(false);
         uITitle.SwitchTitleInstructionScreens();
         uITitle.ToggleButtonEnabled(true);
+        audioManager.Play("ButtonClick");
+    }
+
+    public void SwitchTitleScreens()
+    {
+        uITitle.SwitchTitleInstructionScreens();
+        audioManager.Play("ButtonClick");
     }
 
 }
